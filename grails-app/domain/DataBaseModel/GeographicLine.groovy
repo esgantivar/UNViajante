@@ -2,6 +2,7 @@ package DataBaseModel
 
 class GeographicLine {
 	int idGeoLine;
-	static hasMany =[points: GeographicPoint,routes: Route]
+	static hasOne = [route: Route]
+	static hasMany =[points: GeographicPoint]
 	static belongsTo = GeographicPoint
 }

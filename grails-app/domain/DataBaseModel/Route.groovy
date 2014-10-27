@@ -4,11 +4,10 @@ class Route {
 	int idRoute
 	int positionsAvaiable
 	String nameRoute
-	static hasMany = [travel:GeographicPoint,
-		intermediateStops:TransportTerminal,
-		officialStops:BusStop]
-	static hasOne = [company:Company ,
-		tSource: TransportTerminal,
-		tTarget: TransportTerminal]
+	TransportTerminal target
+	TransportTerminal source
+	static belongsTo = [company:Company,intermediateTerminal:TransportTerminal]
+	static hasOne = [travel:GeographicLine]
+	static hasMany = [officialStops:BusStop,intermediateTerminal:TransportTerminal]
 	
 }
