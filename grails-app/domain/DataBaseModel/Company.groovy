@@ -1,0 +1,5 @@
+package DataBaseModel
+
+class Company {
+
+}
