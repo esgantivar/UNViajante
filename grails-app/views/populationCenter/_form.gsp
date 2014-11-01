@@ -20,12 +20,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: populationCenterInstance, field: 'idGeoPoint', 'error')} required">
-	<label for="idGeoPoint">
-		<g:message code="populationCenter.idGeoPoint.label" default="Id Geo Point" />
+<div class="fieldcontain ${hasErrors(bean: populationCenterInstance, field: 'department', 'error')} required">
+	<label for="department">
+		<g:message code="populationCenter.department.label" default="Department" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="idGeoPoint" type="number" value="${populationCenterInstance.idGeoPoint}" required=""/>
+	<g:select id="department" name="department.id" from="${DataBaseModel.Department.list()}" optionKey="id" required="" value="${populationCenterInstance?.department?.id}" class="many-to-one"/>
 
 </div>
 
@@ -38,39 +38,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: populationCenterInstance, field: 'latitude', 'error')} required">
-	<label for="latitude">
-		<g:message code="populationCenter.latitude.label" default="Latitude" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="latitude" value="${fieldValue(bean: populationCenterInstance, field: 'latitude')}" required=""/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: populationCenterInstance, field: 'longitude', 'error')} required">
-	<label for="longitude">
-		<g:message code="populationCenter.longitude.label" default="Longitude" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="longitude" value="${fieldValue(bean: populationCenterInstance, field: 'longitude')}" required=""/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: populationCenterInstance, field: 'namePCenter', 'error')} required">
 	<label for="namePCenter">
 		<g:message code="populationCenter.namePCenter.label" default="Name PC enter" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="namePCenter" required="" value="${populationCenterInstance?.namePCenter}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: populationCenterInstance, field: 'referenceSystem', 'error')} required">
-	<label for="referenceSystem">
-		<g:message code="populationCenter.referenceSystem.label" default="Reference System" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="referenceSystem" required="" value="${populationCenterInstance?.referenceSystem}"/>
 
 </div>
 

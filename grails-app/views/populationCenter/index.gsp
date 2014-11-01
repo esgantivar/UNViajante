@@ -24,17 +24,11 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="idGeoPoint" title="${message(code: 'populationCenter.idGeoPoint.label', default: 'Id Geo Point')}" />
+						<th><g:message code="populationCenter.department.label" default="Department" /></th>
 					
 						<g:sortableColumn property="idPopulationCenter" title="${message(code: 'populationCenter.idPopulationCenter.label', default: 'Id Population Center')}" />
 					
-						<g:sortableColumn property="latitude" title="${message(code: 'populationCenter.latitude.label', default: 'Latitude')}" />
-					
-						<g:sortableColumn property="longitude" title="${message(code: 'populationCenter.longitude.label', default: 'Longitude')}" />
-					
 						<g:sortableColumn property="namePCenter" title="${message(code: 'populationCenter.namePCenter.label', default: 'Name PC enter')}" />
-					
-						<g:sortableColumn property="referenceSystem" title="${message(code: 'populationCenter.referenceSystem.label', default: 'Reference System')}" />
 					
 					</tr>
 				</thead>
@@ -42,17 +36,11 @@
 				<g:each in="${populationCenterInstanceList}" status="i" var="populationCenterInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${populationCenterInstance.id}">${fieldValue(bean: populationCenterInstance, field: "idGeoPoint")}</g:link></td>
+						<td><g:link action="show" id="${populationCenterInstance.id}">${fieldValue(bean: populationCenterInstance, field: "department")}</g:link></td>
 					
 						<td>${fieldValue(bean: populationCenterInstance, field: "idPopulationCenter")}</td>
 					
-						<td>${fieldValue(bean: populationCenterInstance, field: "latitude")}</td>
-					
-						<td>${fieldValue(bean: populationCenterInstance, field: "longitude")}</td>
-					
 						<td>${fieldValue(bean: populationCenterInstance, field: "namePCenter")}</td>
-					
-						<td>${fieldValue(bean: populationCenterInstance, field: "referenceSystem")}</td>
 					
 					</tr>
 				</g:each>

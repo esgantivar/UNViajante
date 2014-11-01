@@ -34,11 +34,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${populationCenterInstance?.idGeoPoint}">
+				<g:if test="${populationCenterInstance?.department}">
 				<li class="fieldcontain">
-					<span id="idGeoPoint-label" class="property-label"><g:message code="populationCenter.idGeoPoint.label" default="Id Geo Point" /></span>
+					<span id="department-label" class="property-label"><g:message code="populationCenter.department.label" default="Department" /></span>
 					
-						<span class="property-value" aria-labelledby="idGeoPoint-label"><g:fieldValue bean="${populationCenterInstance}" field="idGeoPoint"/></span>
+						<span class="property-value" aria-labelledby="department-label"><g:link controller="department" action="show" id="${populationCenterInstance?.department?.id}">${populationCenterInstance?.department?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -52,38 +52,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${populationCenterInstance?.latitude}">
-				<li class="fieldcontain">
-					<span id="latitude-label" class="property-label"><g:message code="populationCenter.latitude.label" default="Latitude" /></span>
-					
-						<span class="property-value" aria-labelledby="latitude-label"><g:fieldValue bean="${populationCenterInstance}" field="latitude"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${populationCenterInstance?.longitude}">
-				<li class="fieldcontain">
-					<span id="longitude-label" class="property-label"><g:message code="populationCenter.longitude.label" default="Longitude" /></span>
-					
-						<span class="property-value" aria-labelledby="longitude-label"><g:fieldValue bean="${populationCenterInstance}" field="longitude"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${populationCenterInstance?.namePCenter}">
 				<li class="fieldcontain">
 					<span id="namePCenter-label" class="property-label"><g:message code="populationCenter.namePCenter.label" default="Name PC enter" /></span>
 					
 						<span class="property-value" aria-labelledby="namePCenter-label"><g:fieldValue bean="${populationCenterInstance}" field="namePCenter"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${populationCenterInstance?.referenceSystem}">
-				<li class="fieldcontain">
-					<span id="referenceSystem-label" class="property-label"><g:message code="populationCenter.referenceSystem.label" default="Reference System" /></span>
-					
-						<span class="property-value" aria-labelledby="referenceSystem-label"><g:fieldValue bean="${populationCenterInstance}" field="referenceSystem"/></span>
 					
 				</li>
 				</g:if>
