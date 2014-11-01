@@ -7,4 +7,6 @@ class InicioController {
 	}
 	
 	def inicio = {}
+	def nosotros = {}
+	def rutas = {}
 }
