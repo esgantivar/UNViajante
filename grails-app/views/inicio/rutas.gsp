@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Nina | Contact</title>
+<title>Rutas</title>
 <meta charset="utf-8">
-<script src="js/jquery.tools.min.js"></script>
-<link rel="stylesheet" href="styles/reset.css" type="text/css">
-<link rel="stylesheet" href="styles/styl.css" type="text/css">
+<script src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
+<link rel="stylesheet" href="https://dl.dropboxusercontent.com/u/49936729/UNViajante/styles/reset.css" type="text/css">
+<link rel="stylesheet" href="https://dl.dropboxusercontent.com/u/49936729/UNViajante/styles/styl.css" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div id="header">
   <div id="header_in">
-    <h1><a href="index.html"><b>NINA</b></a></h1>
+    <h1><a href="inicio.gsp"><img style="width: 155px; height: 70px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/UNViajante.PNG"></img></a></h1>
     <div id="menu">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="ourwork.html">Our work</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="inicio.gsp">Inicio</a></li>
+        <li><a href="rutas.gsp" class="active">Rutas</a></li>
+        <li><a href="nosotros.gsp">Nosotros</a></li>
       </ul>
     </div>
   </div>
 </div>
 <div id="main_part_inner">
   <div id="main_part_inner_in">
-    <h2>Contact</h2>
-    <div class="button_main"> <a href="#" class="button_dark">INCIDIDUNT</a> </div>
+    <h2>Rutas Intermunicipales</h2>
   </div>
 </div>
 <div id="content_inner">

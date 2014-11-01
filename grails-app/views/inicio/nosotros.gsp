@@ -1,60 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Nina | About</title>
+<title>Nosotros</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="styles/reset.css" type="text/css">
-<link rel="stylesheet" href="styles/styl.css" type="text/css">
+<link rel="stylesheet" href="https://dl.dropboxusercontent.com/u/49936729/UNViajante/styles/reset.css" type="text/css">
+<link rel="stylesheet" href="https://dl.dropboxusercontent.com/u/49936729/UNViajante/styles/styl.css" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div id="header">
   <div id="header_in">
-    <h1><a href="index.html"><b>NINA</b></a></h1>
+    <h1><a href="i"><img style="width: 155px; height: 70px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/UNViajante.PNG"></img></a></h1>
     <div id="menu">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="ourwork.html">Our work</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="inicio.gsp">Inicio</a></li>
+        <li><a href="rutas.gsp">Rutas</a></li>
+        <li><a href="nosotros.gsp" class="active">Nosotros</a></li>
       </ul>
     </div>
   </div>
 </div>
 <div id="main_part_inner">
   <div id="main_part_inner_in">
-    <h2>About us</h2>
-    <div class="button_main"> <a href="#" class="button_dark">INCIDIDUNT</a> </div>
+    <h2>Acerca de Nosotros</h2>
+    <div class="button_main"> <a href="#" class="button_dark">SOCIAL</a> </div>
   </div>
 </div>
 <div id="content_inner">
-  <h3>Our Team</h3>
-  <p class="teamline">Team full of amazing people and cats. Although young, we are all very experienced in what we do, just see our resumes or let our work speak for us!</p>
+  <h3>Nuestro Equipo</h3>
+  <p class="teamline">Grupo de Estudiantes de Ingenieria de Sistemas y Computación de la Universidad Nacional de Colombia. <a href="http://www.unal.edu.co" target="_blank">#OrgulloUN</a></p>
   <div class="sixths_team">
-    <h4>Find out more<br>
-      <span>about him</span> </h4>
-    <a href="#"><img src="img/team_member1.jpg" alt=""></a> <a href="#" class="profession">developer</a> </div>
+    <h4>Encuentra más<br>
+      <span>Acerca de </span> </h4>
+    <a href="http://www.facebook.com/sneyder.gantiva" target = "_blank"><img style="width: 150px; height: 150px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/Sneyder.png" alt=""></a> <a href="#" class="profession">Sneyder Gantiva</a> </div>
   <div class="sixths_team">
-    <h4>Find out more<br>
+    <h4>Encuentra más<br>
       <span>about it</span> </h4>
-    <a href="#"><img src="img/team_member2.jpg" alt=""></a> <a href="#" class="profession">pussy</a> </div>
+    <a href="http://www.facebook.com/rainsanchez" target = "_blank"><img style="width: 150px; height: 150px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/Julio.jpg" alt=""></a> <a href="#" class="profession">Julio Sanchez</a> </div>
   <div class="sixths_team">
-    <h4>Find out more<br>
-      <span>about him</span> </h4>
-    <a href="#"><img src="img/team_member3.jpg" alt=""></a> <a href="#" class="profession">the boss</a> </div>
+    <h4>Encuentra más<br>
+      <span>Acerca de </span> </h4>
+    <a href="http://www.facebook.com/iebvidea" target = "_blank"><img style="width: 150px; height: 150px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/Esteban.jpg" alt=""></a> <a href="#" class="profession">Esteban Ballesteros</a> </div>
   <div class="sixths_team">
-    <h4>Find out more<br>
-      <span>about her</span> </h4>
-    <a href="#"><img src="img/team_member4.jpg" alt=""></a> <a href="#" class="profession">designer</a> </div>
+    <h4>Encuentra más<br>
+      <span>Acerca de</span> </h4>
+    <a href="http://www.facebook.com/cesar.galvistrivino" target = "_blank"><img style="width: 150px; height: 150px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/Cesar.jpg" alt=""></a> <a href="#" class="profession">Cesar Galvis</a> </div>
   <div class="sixths_team">
-    <h4>Find out more<br>
-      <span>about him</span> </h4>
-    <a href="#"><img src="img/team_member5.jpg" alt=""></a> <a href="#" class="profession">copywriter</a> </div>
-  <div class="sixths_team">
-    <h4>Find out more<br>
-      <span>about her</span> </h4>
-    <a href="#"><img src="img/team_member6.jpg" alt=""></a> <a href="#" class="profession">marketer</a> </div>
+    <h4>Encuentra más<br>
+      <span>Acerca de </span> </h4>
+    <a href="https://www.facebook.com/profile.php?id=630229246" target = "_blank"><img style="width: 150px; height: 150px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/Wiston.jpg" alt=""></a> <a href="#" class="profession">Wiston Forero</a> </div>
+  
+    
   <hr class="cleanit">
   <div class="history_blok">
     <h3>A bit of our history</h3>
