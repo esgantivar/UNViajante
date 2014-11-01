@@ -1,0 +1,66 @@
+
+<%@ page import="DataBaseModel.PopulationCenter" %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="layout" content="main">
+		<g:set var="entityName" value="${message(code: 'populationCenter.label', default: 'PopulationCenter')}" />
+		<title><g:message code="default.list.label" args="[entityName]" /></title>
+	</head>
+	<body>
+		<a href="#list-populationCenter" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<div class="nav" role="navigation">
+			<ul>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+			</ul>
+		</div>
+		<div id="list-populationCenter" class="content scaffold-list" role="main">
+			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<g:if test="${flash.message}">
+				<div class="message" role="status">${flash.message}</div>
+			</g:if>
+			<table>
+			<thead>
+					<tr>
+					
+						<g:sortableColumn property="idGeoPoint" title="${message(code: 'populationCenter.idGeoPoint.label', default: 'Id Geo Point')}" />
+					
+						<g:sortableColumn property="idPopulationCenter" title="${message(code: 'populationCenter.idPopulationCenter.label', default: 'Id Population Center')}" />
+					
+						<g:sortableColumn property="latitude" title="${message(code: 'populationCenter.latitude.label', default: 'Latitude')}" />
+					
+						<g:sortableColumn property="longitude" title="${message(code: 'populationCenter.longitude.label', default: 'Longitude')}" />
+					
+						<g:sortableColumn property="namePCenter" title="${message(code: 'populationCenter.namePCenter.label', default: 'Name PC enter')}" />
+					
+						<g:sortableColumn property="referenceSystem" title="${message(code: 'populationCenter.referenceSystem.label', default: 'Reference System')}" />
+					
+					</tr>
+				</thead>
+				<tbody>
+				<g:each in="${populationCenterInstanceList}" status="i" var="populationCenterInstance">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					
+						<td><g:link action="show" id="${populationCenterInstance.id}">${fieldValue(bean: populationCenterInstance, field: "idGeoPoint")}</g:link></td>
+					
+						<td>${fieldValue(bean: populationCenterInstance, field: "idPopulationCenter")}</td>
+					
+						<td>${fieldValue(bean: populationCenterInstance, field: "latitude")}</td>
+					
+						<td>${fieldValue(bean: populationCenterInstance, field: "longitude")}</td>
+					
+						<td>${fieldValue(bean: populationCenterInstance, field: "namePCenter")}</td>
+					
+						<td>${fieldValue(bean: populationCenterInstance, field: "referenceSystem")}</td>
+					
+					</tr>
+				</g:each>
+				</tbody>
+			</table>
+			<div class="pagination">
+				<g:paginate total="${populationCenterInstanceCount ?: 0}" />
+			</div>
+		</div>
+	</body>
+</html>
