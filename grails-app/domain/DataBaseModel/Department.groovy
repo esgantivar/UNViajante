@@ -2,7 +2,7 @@ package DataBaseModel
 
 class Department {
 	
-	int idDepartment
+	String idDepartment
 	String name;
 	static hasMany = [centers: PopulationCenter]
     static constraints = {
