@@ -20,21 +20,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: populationCenterInstance, field: 'department', 'error')} required">
-	<label for="department">
-		<g:message code="populationCenter.department.label" default="Department" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="department" name="department.id" from="${DataBaseModel.Department.list()}" optionKey="id" required="" value="${populationCenterInstance?.department?.id}" class="many-to-one"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: populationCenterInstance, field: 'idPopulationCenter', 'error')} required">
 	<label for="idPopulationCenter">
 		<g:message code="populationCenter.idPopulationCenter.label" default="Id Population Center" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="idPopulationCenter" type="number" value="${populationCenterInstance.idPopulationCenter}" required=""/>
+	<g:textField name="idPopulationCenter" required="" value="${populationCenterInstance?.idPopulationCenter}"/>
 
 </div>
 

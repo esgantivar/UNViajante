@@ -24,8 +24,6 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="populationCenter.department.label" default="Department" /></th>
-					
 						<g:sortableColumn property="idPopulationCenter" title="${message(code: 'populationCenter.idPopulationCenter.label', default: 'Id Population Center')}" />
 					
 						<g:sortableColumn property="namePCenter" title="${message(code: 'populationCenter.namePCenter.label', default: 'Name PC enter')}" />
@@ -36,9 +34,7 @@
 				<g:each in="${populationCenterInstanceList}" status="i" var="populationCenterInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${populationCenterInstance.id}">${fieldValue(bean: populationCenterInstance, field: "department")}</g:link></td>
-					
-						<td>${fieldValue(bean: populationCenterInstance, field: "idPopulationCenter")}</td>
+						<td><g:link action="show" id="${populationCenterInstance.id}">${fieldValue(bean: populationCenterInstance, field: "idPopulationCenter")}</g:link></td>
 					
 						<td>${fieldValue(bean: populationCenterInstance, field: "namePCenter")}</td>
 					

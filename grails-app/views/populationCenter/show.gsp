@@ -34,15 +34,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${populationCenterInstance?.department}">
-				<li class="fieldcontain">
-					<span id="department-label" class="property-label"><g:message code="populationCenter.department.label" default="Department" /></span>
-					
-						<span class="property-value" aria-labelledby="department-label"><g:link controller="department" action="show" id="${populationCenterInstance?.department?.id}">${populationCenterInstance?.department?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${populationCenterInstance?.idPopulationCenter}">
 				<li class="fieldcontain">
 					<span id="idPopulationCenter-label" class="property-label"><g:message code="populationCenter.idPopulationCenter.label" default="Id Population Center" /></span>
