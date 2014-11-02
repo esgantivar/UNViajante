@@ -11,15 +11,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'idCompany', 'error')} required">
-	<label for="idCompany">
-		<g:message code="company.idCompany.label" default="Id Company" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="idCompany" type="number" value="${companyInstance.idCompany}" required=""/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: companyInstance, field: 'nameCompany', 'error')} required">
 	<label for="nameCompany">
 		<g:message code="company.nameCompany.label" default="Name Company" />

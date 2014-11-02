@@ -26,8 +26,6 @@
 					
 						<g:sortableColumn property="address" title="${message(code: 'company.address.label', default: 'Address')}" />
 					
-						<g:sortableColumn property="idCompany" title="${message(code: 'company.idCompany.label', default: 'Id Company')}" />
-					
 						<g:sortableColumn property="nameCompany" title="${message(code: 'company.nameCompany.label', default: 'Name Company')}" />
 					
 						<g:sortableColumn property="telephoneNumber" title="${message(code: 'company.telephoneNumber.label', default: 'Telephone Number')}" />
@@ -39,8 +37,6 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${companyInstance.id}">${fieldValue(bean: companyInstance, field: "address")}</g:link></td>
-					
-						<td>${fieldValue(bean: companyInstance, field: "idCompany")}</td>
 					
 						<td>${fieldValue(bean: companyInstance, field: "nameCompany")}</td>
 					

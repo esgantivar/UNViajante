@@ -32,15 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${companyInstance?.idCompany}">
-				<li class="fieldcontain">
-					<span id="idCompany-label" class="property-label"><g:message code="company.idCompany.label" default="Id Company" /></span>
-					
-						<span class="property-value" aria-labelledby="idCompany-label"><g:fieldValue bean="${companyInstance}" field="idCompany"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${companyInstance?.nameCompany}">
 				<li class="fieldcontain">
 					<span id="nameCompany-label" class="property-label"><g:message code="company.nameCompany.label" default="Name Company" /></span>

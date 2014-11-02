@@ -24,17 +24,17 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="route.company.label" default="Company" /></th>
+						<th><g:message code="route.target.label" default="Target" /></th>
+					
+						<th><g:message code="route.source.label" default="Source" /></th>
 					
 						<g:sortableColumn property="idRoute" title="${message(code: 'route.idRoute.label', default: 'Id Route')}" />
 					
-						<th><g:message code="route.intermediateTerminal.label" default="Intermediate Terminal" /></th>
-					
-						<g:sortableColumn property="nameRoute" title="${message(code: 'route.nameRoute.label', default: 'Name Route')}" />
-					
 						<g:sortableColumn property="positionsAvaiable" title="${message(code: 'route.positionsAvaiable.label', default: 'Positions Avaiable')}" />
 					
-						<th><g:message code="route.source.label" default="Source" /></th>
+						<g:sortableColumn property="duracionViaje" title="${message(code: 'route.duracionViaje.label', default: 'Duracion Viaje')}" />
+					
+						<g:sortableColumn property="nameRoute" title="${message(code: 'route.nameRoute.label', default: 'Name Route')}" />
 					
 					</tr>
 				</thead>
@@ -42,17 +42,17 @@
 				<g:each in="${routeInstanceList}" status="i" var="routeInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${routeInstance.id}">${fieldValue(bean: routeInstance, field: "company")}</g:link></td>
+						<td><g:link action="show" id="${routeInstance.id}">${fieldValue(bean: routeInstance, field: "target")}</g:link></td>
+					
+						<td>${fieldValue(bean: routeInstance, field: "source")}</td>
 					
 						<td>${fieldValue(bean: routeInstance, field: "idRoute")}</td>
 					
-						<td>${fieldValue(bean: routeInstance, field: "intermediateTerminal")}</td>
-					
-						<td>${fieldValue(bean: routeInstance, field: "nameRoute")}</td>
-					
 						<td>${fieldValue(bean: routeInstance, field: "positionsAvaiable")}</td>
 					
-						<td>${fieldValue(bean: routeInstance, field: "source")}</td>
+						<td>${fieldValue(bean: routeInstance, field: "duracionViaje")}</td>
+					
+						<td>${fieldValue(bean: routeInstance, field: "nameRoute")}</td>
 					
 					</tr>
 				</g:each>
