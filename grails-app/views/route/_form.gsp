@@ -2,21 +2,21 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: routeInstance, field: 'target', 'error')} ">
-	<label for="target">
-		<g:message code="route.target.label" default="Target" />
+<div class="fieldcontain ${hasErrors(bean: routeInstance, field: 'targetTerminal', 'error')} ">
+	<label for="targetTerminal">
+		<g:message code="route.targetTerminal.label" default="Target Terminal" />
 		
 	</label>
-	<g:select id="target" name="target.id" from="${DataBaseModel.TransportTerminal.list()}" optionKey="id" value="${routeInstance?.target?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="targetTerminal" name="targetTerminal.id" from="${DataBaseModel.TransportTerminal.list()}" optionKey="id" value="${routeInstance?.targetTerminal?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: routeInstance, field: 'source', 'error')} ">
-	<label for="source">
-		<g:message code="route.source.label" default="Source" />
+<div class="fieldcontain ${hasErrors(bean: routeInstance, field: 'sourceTerminal', 'error')} ">
+	<label for="sourceTerminal">
+		<g:message code="route.sourceTerminal.label" default="Source Terminal" />
 		
 	</label>
-	<g:select id="source" name="source.id" from="${DataBaseModel.TransportTerminal.list()}" optionKey="id" value="${routeInstance?.source?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="sourceTerminal" name="sourceTerminal.id" from="${DataBaseModel.TransportTerminal.list()}" optionKey="id" value="${routeInstance?.sourceTerminal?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
@@ -38,6 +38,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: routeInstance, field: 'company', 'error')} required">
+	<label for="company">
+		<g:message code="route.company.label" default="Company" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="company" name="company.id" from="${DataBaseModel.Company.list()}" optionKey="id" required="" value="${routeInstance?.company?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: routeInstance, field: 'destinyCity', 'error')} required">
+	<label for="destinyCity">
+		<g:message code="route.destinyCity.label" default="Destiny City" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="destinyCity" required="" value="${routeInstance?.destinyCity}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: routeInstance, field: 'duracionViaje', 'error')} required">
 	<label for="duracionViaje">
 		<g:message code="route.duracionViaje.label" default="Duracion Viaje" />
@@ -56,21 +74,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: routeInstance, field: 'nameRoute', 'error')} required">
-	<label for="nameRoute">
-		<g:message code="route.nameRoute.label" default="Name Route" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="nameRoute" required="" value="${routeInstance?.nameRoute}"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: routeInstance, field: 'officialStops', 'error')} ">
 	<label for="officialStops">
 		<g:message code="route.officialStops.label" default="Official Stops" />
 		
 	</label>
 	<g:select name="officialStops" from="${DataBaseModel.BusStop.list()}" multiple="multiple" optionKey="id" size="5" value="${routeInstance?.officialStops*.id}" class="many-to-many"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: routeInstance, field: 'originCity', 'error')} required">
+	<label for="originCity">
+		<g:message code="route.originCity.label" default="Origin City" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="originCity" required="" value="${routeInstance?.originCity}"/>
 
 </div>
 

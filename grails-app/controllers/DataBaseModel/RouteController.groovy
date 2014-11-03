@@ -11,8 +11,9 @@ class RouteController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Route.list(params), model:[routeInstanceCount: Route.count()]
+        //params.max = Math.min(max ?: 10, 100)
+        //respond Route.list(params), model:[routeInstanceCount: Route.count()]
+		render view:'consultas', model:[companies: Company.list(), populations: PopulationCenter.list()]
     }
 
     def show(Route routeInstance) {
@@ -23,6 +24,22 @@ class RouteController {
         respond new Route(params)
     }
 
+	def listaPorEmpresa(){
+		//Consulta
+		def company = Company.findByNameCompany(params.id)
+		def routeList = company.routesAvailable
+		render view:'resultados', model:[routes: routeList]
+	}
+	
+	def listaPorCiudad(){
+		//Consulta
+		def pobName = params.id
+		pobName = pobName[0] + pobName.substring(1,pobName.size()).toLowerCase()
+		def routeList = Route.findAllByOriginCity(pobName)  
+		routeList += Route.findAllByDestinyCity(pobName)
+		render view:'resultados', model:[routes: routeList]
+	}
+	
     @Transactional
     def save(Route routeInstance) {
         if (routeInstance == null) {

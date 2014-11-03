@@ -23,20 +23,20 @@
 			</g:if>
 			<ol class="property-list route">
 			
-				<g:if test="${routeInstance?.target}">
+				<g:if test="${routeInstance?.targetTerminal}">
 				<li class="fieldcontain">
-					<span id="target-label" class="property-label"><g:message code="route.target.label" default="Target" /></span>
+					<span id="targetTerminal-label" class="property-label"><g:message code="route.targetTerminal.label" default="Target Terminal" /></span>
 					
-						<span class="property-value" aria-labelledby="target-label"><g:link controller="transportTerminal" action="show" id="${routeInstance?.target?.id}">${routeInstance?.target?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="targetTerminal-label"><g:link controller="transportTerminal" action="show" id="${routeInstance?.targetTerminal?.id}">${routeInstance?.targetTerminal?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${routeInstance?.source}">
+				<g:if test="${routeInstance?.sourceTerminal}">
 				<li class="fieldcontain">
-					<span id="source-label" class="property-label"><g:message code="route.source.label" default="Source" /></span>
+					<span id="sourceTerminal-label" class="property-label"><g:message code="route.sourceTerminal.label" default="Source Terminal" /></span>
 					
-						<span class="property-value" aria-labelledby="source-label"><g:link controller="transportTerminal" action="show" id="${routeInstance?.source?.id}">${routeInstance?.source?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="sourceTerminal-label"><g:link controller="transportTerminal" action="show" id="${routeInstance?.sourceTerminal?.id}">${routeInstance?.sourceTerminal?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -55,6 +55,24 @@
 					<span id="positionsAvaiable-label" class="property-label"><g:message code="route.positionsAvaiable.label" default="Positions Avaiable" /></span>
 					
 						<span class="property-value" aria-labelledby="positionsAvaiable-label"><g:fieldValue bean="${routeInstance}" field="positionsAvaiable"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${routeInstance?.company}">
+				<li class="fieldcontain">
+					<span id="company-label" class="property-label"><g:message code="route.company.label" default="Company" /></span>
+					
+						<span class="property-value" aria-labelledby="company-label"><g:link controller="company" action="show" id="${routeInstance?.company?.id}">${routeInstance?.company?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${routeInstance?.destinyCity}">
+				<li class="fieldcontain">
+					<span id="destinyCity-label" class="property-label"><g:message code="route.destinyCity.label" default="Destiny City" /></span>
+					
+						<span class="property-value" aria-labelledby="destinyCity-label"><g:fieldValue bean="${routeInstance}" field="destinyCity"/></span>
 					
 				</li>
 				</g:if>
@@ -79,15 +97,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${routeInstance?.nameRoute}">
-				<li class="fieldcontain">
-					<span id="nameRoute-label" class="property-label"><g:message code="route.nameRoute.label" default="Name Route" /></span>
-					
-						<span class="property-value" aria-labelledby="nameRoute-label"><g:fieldValue bean="${routeInstance}" field="nameRoute"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${routeInstance?.officialStops}">
 				<li class="fieldcontain">
 					<span id="officialStops-label" class="property-label"><g:message code="route.officialStops.label" default="Official Stops" /></span>
@@ -95,6 +104,15 @@
 						<g:each in="${routeInstance.officialStops}" var="o">
 						<span class="property-value" aria-labelledby="officialStops-label"><g:link controller="busStop" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></span>
 						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${routeInstance?.originCity}">
+				<li class="fieldcontain">
+					<span id="originCity-label" class="property-label"><g:message code="route.originCity.label" default="Origin City" /></span>
+					
+						<span class="property-value" aria-labelledby="originCity-label"><g:fieldValue bean="${routeInstance}" field="originCity"/></span>
 					
 				</li>
 				</g:if>

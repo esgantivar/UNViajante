@@ -10,11 +10,13 @@ class DepartmentController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Department.list(params), model:[departmentInstanceCount: Department.count()]
+    def index() {
+        def max = Math.min(params.int('max') ?: 10, 100)
+		def offset = params.int('offset') ?: 0
+		def total = Department.count()
+		def departmentList = Department.list(max:max, offset:offset)
+        render view:'listaDepartamentos', model:[departments: departmentList, totalDepartments: total]
     }
-
     def show(Department departmentInstance) {
         respond departmentInstance
     }

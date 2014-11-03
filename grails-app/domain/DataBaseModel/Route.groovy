@@ -3,18 +3,21 @@ package DataBaseModel
 class Route {
 	int idRoute
 	int positionsAvaiable
-	String nameRoute
+	String originCity
+	String destinyCity
 	float duracionViaje
 	int valorAproxViaje
-	TransportTerminal target
-	TransportTerminal source
+	TransportTerminal targetTerminal
+	TransportTerminal sourceTerminal
 	static belongsTo = [company:Company/*, travel: GeographicLine*/]
 	static hasMany = [officialStops:BusStop,intermediateTerminal:TransportTerminal]
 	
 	static constraints ={
-		target(nullable: true)
-		source(nullable: true)
+		targetTerminal(nullable: true)
+		sourceTerminal(nullable: true)
 		idRoute(nullable:true)
 		positionsAvaiable(nullable: true) 
 	}
+	
+	
 }

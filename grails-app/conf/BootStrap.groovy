@@ -32,11 +32,11 @@ class BootStrap {
 		new Department(idDepartment: "47", name: "Magdalena").save()
 		new Department(idDepartment: "50", name: "Meta").save()
 		new Department(idDepartment: "52", name: "Narino").save()
-		new Department(idDepartment: "54", name: "Norte_de_Santander").save()
+		new Department(idDepartment: "54", name: "Norte de Santander").save()
 		new Department(idDepartment: "86", name: "Putumayo").save()
 		new Department(idDepartment: "63", name: "Quindio").save()
 		new Department(idDepartment: "66", name: "Risaralda").save()
-		new Department(idDepartment: "88", name: "San_Andres").save()
+		new Department(idDepartment: "88", name: "San Andres").save()
 		new Department(idDepartment: "68", name: "Santander").save()
 		new Department(idDepartment: "70", name: "Sucre").save()
 		new Department(idDepartment: "73", name: "Tolima").save()
@@ -97,25 +97,24 @@ class BootStrap {
 		
 		
 		//Rutas
-		agregarRuta(new Route(nameRoute: "Bogotá-Medellín", duracionViaje: 9, valorAproxViaje: 35000), "Rapido Tolima", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Medellín", duracionViaje: 10, valorAproxViaje: 55000), "Flota La Magdalena", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Medellín", duracionViaje: 11, valorAproxViaje: 55000), "Rapido Ochoa", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Medellín", duracionViaje: 12, valorAproxViaje: 55000), "Empresa Arauca", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Medellín", duracionViaje: 13, valorAproxViaje: 60000), "Expreso Brasilia", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Medellín", duracionViaje: 14, valorAproxViaje: 50000), "Coonorte", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Medellín", duracionViaje: 15, valorAproxViaje: 45000), "Flota La Magdalena", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Medellín", duracionViaje: 16, valorAproxViaje: 55000), "Expreso Bolivariano", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Cartagena", duracionViaje: 18, valorAproxViaje: 138000), "Copetran", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Cartagena", duracionViaje: 20, valorAproxViaje: 138000), "Expreso Brasilia", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Cartagena", duracionViaje: 24, valorAproxViaje: 140000), "Rapido Ochoa", null)
-		agregarRuta(new Route(nameRoute: "Bogotá-Cartagena", duracionViaje: 12, valorAproxViaje: 138000), "Berlinas del Fonce", null)
-		agregarRuta(new Route(nameRoute: "Medellín-Bogotá", duracionViaje: 9, valorAproxViaje: 55000), "Expreso Brasilia", null)
-		agregarRuta(new Route(nameRoute: "Medellín-Bogotá", duracionViaje: 8.5, valorAproxViaje: 60000), "Expreso Bolivariano", null)
-		agregarRuta(new Route(nameRoute: "Medellín-Cartagena", duracionViaje: 13, valorAproxViaje: 105000), "Expreso Brasilia", null)
-		agregarRuta(new Route(nameRoute: "Cartagena-Bogotá", duracionViaje: 8.5, valorAproxViaje: 110000), "Expreso Brasilia", null)
-		agregarRuta(new Route(nameRoute: "Cartagena-Medellín", duracionViaje: 13, valorAproxViaje: 105000), "Expreso Brasilia", null)
-
-
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Medellin", duracionViaje: 9, valorAproxViaje: 35000), "Rapido Tolima", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Medellin", duracionViaje: 10, valorAproxViaje: 55000), "Flota La Magdalena", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Medellin", duracionViaje: 11, valorAproxViaje: 55000), "Rapido Ochoa", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Medellin", duracionViaje: 12, valorAproxViaje: 55000), "Empresa Arauca", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Medellin", duracionViaje: 13, valorAproxViaje: 60000), "Expreso Brasilia", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Medellin", duracionViaje: 14, valorAproxViaje: 50000), "Coonorte", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Medellin", duracionViaje: 15, valorAproxViaje: 45000), "Flota La Magdalena", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Medellin", duracionViaje: 16, valorAproxViaje: 55000), "Expreso Bolivariano", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Cartagena", duracionViaje: 18, valorAproxViaje: 138000), "Copetran", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Cartagena", duracionViaje: 20, valorAproxViaje: 138000), "Expreso Brasilia", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Cartagena", duracionViaje: 24, valorAproxViaje: 140000), "Rapido Ochoa", null)
+		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Cartagena", duracionViaje: 12, valorAproxViaje: 138000), "Berlinas del Fonce", null)
+		agregarRuta(new Route(originCity: "Medellin", destinyCity: "Bogota", duracionViaje: 9, valorAproxViaje: 55000), "Expreso Brasilia", null)
+		agregarRuta(new Route(originCity: "Medellin", destinyCity: "Bogota", duracionViaje: 8.5, valorAproxViaje: 60000), "Expreso Bolivariano", null)
+		agregarRuta(new Route(originCity: "Medellin", destinyCity: "Cartagena", duracionViaje: 13, valorAproxViaje: 105000), "Expreso Brasilia", null)
+		agregarRuta(new Route(originCity: "Cartagena", destinyCity: "Bogota", duracionViaje: 8.5, valorAproxViaje: 110000), "Expreso Brasilia", null)
+		agregarRuta(new Route(originCity: "Cartagena", destinyCity: "Medellin", duracionViaje: 13, valorAproxViaje: 105000), "Expreso Brasilia", null)
+		
 		
 	}
 	
