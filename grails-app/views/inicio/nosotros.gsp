@@ -28,7 +28,7 @@
 </div>
 <div id="content_inner">
   <h3>Nuestro Equipo</h3>
-  <p class="teamline">Grupo de Estudiantes de Ingenieria de Sistemas y Computación de la Universidad Nacional de Colombia. <a href="http://www.unal.edu.co" target="_blank">#OrgulloUN</a></p>
+  <p class="teamline">Grupo de Estudiantes de Ingenieria de Sistemas y Computación de la Universidad Nacional de Colombia. <a href="https://twitter.com/OrgulloUN" target="_blank">#OrgulloUN</a></p>
   <div class="sixths_team">
     <h4>Encuentra más<br>
       <span>Acerca de </span> </h4>
