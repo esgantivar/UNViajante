@@ -12,7 +12,8 @@
 <div id="header">
   <div id="header_in">
     <h1>
-    <a href="inicio.gsp"> <img style="width: 155px; height: 70px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/UNViajante.PNG"></img></a></h1>
+    <a href="inicio.gsp"><asset:image  src="UNViajante.PNG" alt="Generic placeholder imag" width="155px" height="70px" /></a></h1>
+	
     <div id="menu">
       <ul>
         <li><a href="inicio.gsp" class="active">Inicio</a></li>

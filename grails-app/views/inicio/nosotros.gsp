@@ -10,7 +10,7 @@
 <body>
 <div id="header">
   <div id="header_in">
-    <h1><a href="i"><img style="width: 155px; height: 70px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/UNViajante.PNG"></img></a></h1>
+    <h1><a href="i"> <a href="inicio.gsp"><asset:image  src="UNViajante.PNG" alt="Generic placeholder imag" width="155px" height="70px" /></a></h1></a></h1>
     <div id="menu">
       <ul>
         <li><a href="inicio.gsp">Inicio</a></li>
@@ -32,23 +32,23 @@
   <div class="sixths_team">
     <h4>Encuentra más<br>
       <span>Acerca de </span> </h4>
-    <a href="http://www.facebook.com/sneyder.gantiva" target = "_blank"><img style="width: 150px; height: 150px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/Sneyder.png" alt=""></a> <a href="#" class="profession">Sneyder Gantiva</a> </div>
-  <div class="sixths_team">
-    <h4>Encuentra más<br>
-      <span>about it</span> </h4>
-    <a href="http://www.facebook.com/rainsanchez" target = "_blank"><img style="width: 150px; height: 150px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/Julio.jpg" alt=""></a> <a href="#" class="profession">Julio Sanchez</a> </div>
-  <div class="sixths_team">
-    <h4>Encuentra más<br>
-      <span>Acerca de </span> </h4>
-    <a href="http://www.facebook.com/iebvidea" target = "_blank"><img style="width: 150px; height: 150px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/Esteban.jpg" alt=""></a> <a href="#" class="profession">Esteban Ballesteros</a> </div>
+    <a href="http://www.facebook.com/sneyder.gantiva" target = "_blank"><asset:image  src="Sneyder.png" alt="Generic placeholder imag" width="150px" height="150px" /></a> <a href="#" class="profession">Sneyder Gantiva</a> </div>
   <div class="sixths_team">
     <h4>Encuentra más<br>
       <span>Acerca de</span> </h4>
-    <a href="http://www.facebook.com/cesar.galvistrivino" target = "_blank"><img style="width: 150px; height: 150px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/Cesar.jpg" alt=""></a> <a href="#" class="profession">Cesar Galvis</a> </div>
+    <a href="http://www.facebook.com/rainsanchez" target = "_blank"><asset:image  src="Julio.jpg" alt="Generic placeholder imag" width="150px" height="150px" /></a> <a href="#" class="profession">Julio Sanchez</a> </div>
   <div class="sixths_team">
     <h4>Encuentra más<br>
       <span>Acerca de </span> </h4>
-    <a href="https://www.facebook.com/profile.php?id=630229246" target = "_blank"><img style="width: 150px; height: 150px;" src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/img/Wiston.jpg" alt=""></a> <a href="#" class="profession">Wiston Forero</a> </div>
+    <a href="http://www.facebook.com/iebvidea" target = "_blank"><asset:image  src="Esteban.jpg" alt="Generic placeholder imag" width="150px" height="150px" /></a> <a href="#" class="profession">Esteban Ballesteros</a> </div>
+  <div class="sixths_team">
+    <h4>Encuentra más<br>
+      <span>Acerca de</span> </h4>
+    <a href="http://www.facebook.com/cesar.galvistrivino" target = "_blank"><asset:image  src="Cesar.jpg" alt="Generic placeholder imag" width="150px" height="150px" /></a> <a href="#" class="profession">Cesar Galvis</a> </div>
+  <div class="sixths_team">
+    <h4>Encuentra más<br>
+      <span>Acerca de </span> </h4>
+    <a href="https://www.facebook.com/profile.php?id=630229246" target = "_blank"><asset:image  src="Wiston.jpg" alt="Generic placeholder imag" width="150px" height="150px" /></a> <a href="#" class="profession">Wiston Forero</a> </div>
   
     
   <hr class="cleanit">
