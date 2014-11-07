@@ -40,6 +40,23 @@ class RouteController {
 		render view:'resultados', model:[routes: routeList]
 	}
 	
+	def consultaOrigenDestino(){
+		//consulta
+		def origen = params.origen
+		def destino =params.destino
+		def empresa= params.empresa
+		if(empresa != null){
+			def routeList = Route.where{
+				originCity == origen && destinyCity == destino && company.nameCompany == empresa
+			}
+			render model:[routes: routeList.list()]
+		}
+		else{
+			def routeList = Route.findAllByOriginCityAndDestinyCity(origen, destino)
+			render model:[routes: routeList]
+		}
+	}
+	
     @Transactional
     def save(Route routeInstance) {
         if (routeInstance == null) {
