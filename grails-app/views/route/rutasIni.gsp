@@ -19,11 +19,18 @@
 	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext'
 	rel='stylesheet' type='text/css'>
 	
- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
 // This example creates a 2-pixel-wide red polyline showing
 // the path of William Kingsford Smith's first trans-Pacific flight between
 // Oakland, CA, and Brisbane, Australia.
+
+<%--HYBRID 	This map type displays a transparent layer of major streets on satellite images.--%>
+<%--ROADMAP 	This map type displays a normal street map.--%>
+<%--SATELLITE 	This map type displays satellite images.--%>
+<%--TERRAIN 	This map type displays maps with physical features such as terrain and vegetation.--%>
+
+<%--https://developers.google.com/maps/documentation/javascript/reference--%>
 
 function initialize() {
   var mapOptions = {
@@ -57,6 +64,8 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>	
+	
+	
 </head>
 
 <body>
@@ -129,38 +138,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			<input type="submit" class="button_submit" value="BUSCAR">
 		</form>
 
-		<g:if test="${routes?.size() > 0}">
-			<h3>Resultados</h3>
-
-			<g:each var="route" in="${routes}">
-				<div style="padding: 20px; background-color: #FFEFDD; cursor: pointer;">
-					<table>
-						<tr>
-							<td><strong>Nombre: </strong> ${route.originCity} - ${route.destinyCity}</td>
-						</tr>
-						<tr>
-							<td><strong>Precio: </strong> ${route.valorAproxViaje}</td>
-						</tr>
-						<tr>
-							<td><strong>Tiempo: </strong> ${route.duracionViaje}</td>
-						</tr>
-						<tr>
-							<td><strong>Empresa: </strong> ${route.company.nameCompany}</td>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-				
-				<br>
-			</g:each>
-		</g:if>
-		<g:if test="${routes?.size() <= 0}">
-		<h3>No hay resultados para esta busqueda</h3>
-		</g:if>
-
 		<div class="cara"></div>
+
 		<%--		<h3>Contact information</h3>--%>
 		<%--		<div class="contactinfo">--%>
 		<%--			<span class="ico_mapmark"><b>15th Avenue, 15 362, San--%>

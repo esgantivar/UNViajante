@@ -13,7 +13,7 @@ class RouteController {
     def index(Integer max) {
         //params.max = Math.min(max ?: 10, 100)
         //respond Route.list(params), model:[routeInstanceCount: Route.count()]
-		render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc')]
+		render view:'rutasIni', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc')]
     }
 
     def show(Route routeInstance) {

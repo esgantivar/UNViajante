@@ -30,7 +30,7 @@
   </div>
  <div class="button_main">
 	    <div class="pxline"></div>
-	    <a href="rutas.gsp" class="button_dark"><strong>TUS RUTAS!</strong></a> </div>
+	    <a href="/UNViajante/route" class="button_dark"><strong>TUS RUTAS!</strong></a> </div>
 		</div>
 <div id="content">
   <div class="thirds">
@@ -39,7 +39,7 @@
   </div>
   <div class="thirds">
     <h3>¿Como puedes consultar tu ruta?</h3>
-    <p>Unicamente dale click a tu origen y destino y encontraras facilmente distintas opciones de Viaje</p>
+    <p>Unicamente selecciona tu origen y destino y encontraras facilmente distintas opciones de Viaje</p>
   </div>
   <div class="thirds">
     <h3>Legalidad</h3>
