@@ -13,7 +13,7 @@ class RouteController {
     def index(Integer max) {
         //params.max = Math.min(max ?: 10, 100)
         //respond Route.list(params), model:[routeInstanceCount: Route.count()]
-		render view:'consultas', model:[companies: Company.list(), populations: PopulationCenter.list()]
+		render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc')]
     }
 
     def show(Route routeInstance) {
@@ -24,37 +24,66 @@ class RouteController {
         respond new Route(params)
     }
 
-	def listaPorEmpresa(){
+	/*def listaPorEmpresa(){
 		//Consulta
-		def company = Company.findByNameCompany(params.id)
+		def company = Company.findByNameCompany(params.empresa)
 		def routeList = company.routesAvailable
-		render view:'resultados', model:[routes: routeList]
+		render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
 	}
 	
 	def listaPorCiudad(){
 		//Consulta
 		def pobName = params.id
-		pobName = pobName[0] + pobName.substring(1,pobName.size()).toLowerCase()
 		def routeList = Route.findAllByOriginCity(pobName)  
 		routeList += Route.findAllByDestinyCity(pobName)
 		render view:'resultados', model:[routes: routeList]
-	}
+	}*/
 	
-	def consultaOrigenDestino(){
+	def consulta(){
 		//consulta
 		def origen = params.origen
-		def destino =params.destino
-		def empresa= params.empresa
-		if(empresa != null){
+		def destino = params.destino
+		def empresa = params.empresa
+		if(empresa != "-1" && origen != "-1" && destino != "-1"){
 			def routeList = Route.where{
 				originCity == origen && destinyCity == destino && company.nameCompany == empresa
 			}
-			render model:[routes: routeList.list()]
-		}
-		else{
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList.list()]
+		}else
+		if(empresa == "-1" && origen != "-1" && destino != "-1"){
 			def routeList = Route.findAllByOriginCityAndDestinyCity(origen, destino)
-			render model:[routes: routeList]
-		}
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
+		}else
+		if(empresa != "-1" && origen == "-1" && destino == "-1"){
+			def routeList = Route.where{
+				company.nameCompany == empresa
+			}
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList.list()]
+		}else
+		if(empresa != "-1" && origen != "-1" && destino == "-1"){
+			def routeList = Route.where{
+				company.nameCompany == empresa && originCity == origen
+			}
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList.list()]
+		}else
+		if(empresa != "-1" && origen == "-1" && destino != "-1"){
+			def routeList = Route.where{
+				company.nameCompany == empresa && destinyCity == destino
+			}
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList.list()]
+		}else
+		if(empresa == "-1" && origen == "-1" && destino != "-1"){
+			def routeList = Route.findAllByDestinyCity(destino)
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
+		}else
+		if(empresa == "-1" && origen != "-1" && destino == "-1"){
+			def routeList = Route.findAllByOriginCity(origen)
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
+		}else
+		if(empresa == "-1" && origen == "-1" && destino == "-1"){
+			def routeList = Route.list()
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
+		}  
 	}
 	
     @Transactional

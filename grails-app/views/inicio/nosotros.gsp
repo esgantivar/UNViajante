@@ -3,8 +3,8 @@
 <head>
 <title>Nosotros</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="${resource(dir:'css',file:'reset.css')}" type="text/css">
-<link rel="stylesheet" href="${resource(dir:'css',file:'styl.css')}" type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}" type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <div id="menu">
       <ul>
         <li><a href="inicio.gsp">Inicio</a></li>
-        <li><a href="rutas.gsp">Rutas</a></li>
+        <li><a href="/UNViajante/route">Rutas</a></li>
         <li><a href="nosotros.gsp" class="active">Nosotros</a></li>
       </ul>
     </div>

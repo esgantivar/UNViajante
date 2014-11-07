@@ -4,8 +4,8 @@
 <title>UNViajante</title>
 <meta charset="utf-8">
 <script src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
-<link rel="stylesheet" href="${resource(dir:'css',file:'reset.css')}" type="text/css">
-<link rel="stylesheet" href="${resource(dir:'css',file:'styl.css')}" type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}" type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -17,7 +17,7 @@
     <div id="menu">
       <ul>
         <li><a href="inicio.gsp" class="active">Inicio</a></li>
-        <li><a href="rutas.gsp">Rutas</a></li>
+        <li><a href="/UNViajante/route">Rutas</a></li>
         <li><a href="nosotros.gsp">Nosotros</a></li>
       </ul>
     </div>
@@ -26,7 +26,7 @@
 <div id="main_part">
   <div id="main_part_in">
     <h2>TRANSPORTE INTERMUNICIPAL INTELIGENTE</h2>
-    <p>TU AMIGO EN LA VIA</p>
+    <p>TU AMIGO EN LA RUTA</p>
   </div>
  <div class="button_main">
 	    <div class="pxline"></div>
