@@ -3,8 +3,8 @@
 <head>
 <title>Nosotros</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="https://dl.dropboxusercontent.com/u/49936729/UNViajante/styles/reset.css" type="text/css">
-<link rel="stylesheet" href="https://dl.dropboxusercontent.com/u/49936729/UNViajante/styles/styl.css" type="text/css">
+<link rel="stylesheet" href="${resource(dir:'css',file:'reset.css')}" type="text/css">
+<link rel="stylesheet" href="${resource(dir:'css',file:'styl.css')}" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body>
