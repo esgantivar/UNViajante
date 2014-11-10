@@ -90,6 +90,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 						<td><label>EMPRESA:</label></td>
 						<td><label>ORIGEN:</label></td>
 						<td><label>DESTINO:</label></td>
+						<td><label>PRECIO:</label></td>
 					</tr>
 
 					<tr>
@@ -119,6 +120,16 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 									<option value="${population.namePCenter}">
 										${population.namePCenter}
+									</option>
+
+								</g:each>
+						</select></td>
+						<td><select name="precio">
+								<option value="-1">Selecciona..</option>
+								<g:each var="price" in="${prices}">
+
+									<option value="${price}">
+										${price}
 									</option>
 
 								</g:each>

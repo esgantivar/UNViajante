@@ -116,8 +116,8 @@ class BootStrap {
 		agregarRuta(new Route(originCity: "Cartagena", destinyCity: "Medellin", duracionViaje: 13, valorAproxViaje: 105000), "Expreso Brasilia", null)
 		
 		
-		def s = "from Route as r where r.originCity =:origin and r.destinyCity =:destiny"
-		def routeList = Route.findAll(s,[origin:"Medellin", destiny:'Bogota'])
+		def s = "from Route as r where r.destinyCity =:destiny and r.valorAproxViaje between 30000 and 50000"
+		def routeList = Route.findAll(s,[destiny:'Medellin'])
 		
 		print routeList
 	}

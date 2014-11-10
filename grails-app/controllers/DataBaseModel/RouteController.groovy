@@ -9,16 +9,12 @@ import grails.transaction.Transactional
 class RouteController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
+	def pricesList = ["20000-30000","30000-50000","50000-70000","70000-90000","mas de 90000"]
+    
+	def index(Integer max) {
         //params.max = Math.min(max ?: 10, 100)
         //respond Route.list(params), model:[routeInstanceCount: Route.count()]
-		def prices = []
-		Route.list().each{
-			prices += it.valorAproxViaje
-		}
-		print prices
-		render view:'rutasIni', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc')]
+		render view:'rutasIni', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList]
     }
 
     def show(Route routeInstance) {
@@ -49,6 +45,7 @@ class RouteController {
 		def origen = params.origen
 		def destino = params.destino
 		def empresa = params.empresa
+		def precio = params.precio.split('-')
 		
 		def c = "from Route as r where "
 		def map = [:]
@@ -73,14 +70,18 @@ class RouteController {
 			c += " and r.company.nameCompany =:company"
 			map["company"] = empresa
 		} 
-		
-	
+		if(precio != "-1" && c.size() == l){
+			c += "r.valorAproxViaje between ${precio[0]} and ${precio[1]}"
+		}
+		if(precio != "-1" && c.size() != l){
+			c += " and r.valorAproxViaje between ${precio[0]} and ${precio[1]}"
+		}
 		if(c.size() == l){
 			def routeList = Route.list()
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList]
 		}else{
 			def routeList = Route.findAll(c, map)
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList]
 		}
 		
 	}
