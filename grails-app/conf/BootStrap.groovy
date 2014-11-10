@@ -115,13 +115,11 @@ class BootStrap {
 		agregarRuta(new Route(originCity: "Cartagena", destinyCity: "Bogota", duracionViaje: 8.5, valorAproxViaje: 110000), "Expreso Brasilia", null)
 		agregarRuta(new Route(originCity: "Cartagena", destinyCity: "Medellin", duracionViaje: 13, valorAproxViaje: 105000), "Expreso Brasilia", null)
 		
-		def r = Route.findAllByOriginCityAndDestinyCity("Bogota", "Medellin")
-		print r
 		
-		def routeList = Route.where{
-			originCity == "Bogota" && destinyCity == "Medellin" && company.nameCompany == "Rapido Tolima"
-		}
-		print routeList.list()
+		def s = "from Route as r where r.originCity =:origin and r.destinyCity =:destiny"
+		def routeList = Route.findAll(s,[origin:"Medellin", destiny:'Bogota'])
+		
+		print routeList
 	}
 	
 	//Las poblaciones correspondientes a un departamento son agregadas al mismo

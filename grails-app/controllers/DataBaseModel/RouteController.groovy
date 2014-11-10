@@ -13,6 +13,11 @@ class RouteController {
     def index(Integer max) {
         //params.max = Math.min(max ?: 10, 100)
         //respond Route.list(params), model:[routeInstanceCount: Route.count()]
+		def prices = []
+		Route.list().each{
+			prices += it.valorAproxViaje
+		}
+		print prices
 		render view:'rutasIni', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc')]
     }
 
@@ -44,46 +49,40 @@ class RouteController {
 		def origen = params.origen
 		def destino = params.destino
 		def empresa = params.empresa
-		if(empresa != "-1" && origen != "-1" && destino != "-1"){
-			def routeList = Route.where{
-				originCity == origen && destinyCity == destino && company.nameCompany == empresa
-			}
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList.list()]
-		}else
-		if(empresa == "-1" && origen != "-1" && destino != "-1"){
-			def routeList = Route.findAllByOriginCityAndDestinyCity(origen, destino)
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
-		}else
-		if(empresa != "-1" && origen == "-1" && destino == "-1"){
-			def routeList = Route.where{
-				company.nameCompany == empresa
-			}
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList.list()]
-		}else
-		if(empresa != "-1" && origen != "-1" && destino == "-1"){
-			def routeList = Route.where{
-				company.nameCompany == empresa && originCity == origen
-			}
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList.list()]
-		}else
-		if(empresa != "-1" && origen == "-1" && destino != "-1"){
-			def routeList = Route.where{
-				company.nameCompany == empresa && destinyCity == destino
-			}
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList.list()]
-		}else
-		if(empresa == "-1" && origen == "-1" && destino != "-1"){
-			def routeList = Route.findAllByDestinyCity(destino)
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
-		}else
-		if(empresa == "-1" && origen != "-1" && destino == "-1"){
-			def routeList = Route.findAllByOriginCity(origen)
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
-		}else
-		if(empresa == "-1" && origen == "-1" && destino == "-1"){
+		
+		def c = "from Route as r where "
+		def map = [:]
+		def l = c.size()
+		if(origen != "-1"){
+			c += "r.originCity =:origin"
+			map["origin"] = origen
+		} 
+		if(destino != "-1" && c.size() == l){
+			c += "r.destinyCity =:destiny"
+			map["destiny"] = destino
+		} 
+		if(destino != "-1" && c.size() != l){
+			c += " and r.destinyCity =:destiny"
+			map["destiny"] = destino
+		} 
+		if(empresa != "-1" && c.size() == l){
+			c += "r.company.nameCompany =:company"
+			map["company"] = empresa
+		} 
+		if(empresa != "-1" && c.size() != l){
+			c += " and r.company.nameCompany =:company"
+			map["company"] = empresa
+		} 
+		
+	
+		if(c.size() == l){
 			def routeList = Route.list()
 			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
-		}  
+		}else{
+			def routeList = Route.findAll(c, map)
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), routes: routeList]
+		}
+		
 	}
 	
     @Transactional
