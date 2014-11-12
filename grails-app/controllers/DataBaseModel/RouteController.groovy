@@ -45,11 +45,13 @@ class RouteController {
 		def origen = params.origen
 		def destino = params.destino
 		def empresa = params.empresa
-		def precio = params.precio.split('-')
+		def precio = params.precio
+		
 		
 		def c = "from Route as r where "
 		def map = [:]
 		def l = c.size()
+		
 		if(origen != "-1"){
 			c += "r.originCity =:origin"
 			map["origin"] = origen
@@ -57,7 +59,7 @@ class RouteController {
 		if(destino != "-1" && c.size() == l){
 			c += "r.destinyCity =:destiny"
 			map["destiny"] = destino
-		} 
+		}else
 		if(destino != "-1" && c.size() != l){
 			c += " and r.destinyCity =:destiny"
 			map["destiny"] = destino
@@ -65,18 +67,25 @@ class RouteController {
 		if(empresa != "-1" && c.size() == l){
 			c += "r.company.nameCompany =:company"
 			map["company"] = empresa
-		} 
+		}else
 		if(empresa != "-1" && c.size() != l){
 			c += " and r.company.nameCompany =:company"
 			map["company"] = empresa
 		} 
 		if(precio != "-1" && c.size() == l){
-			c += "r.valorAproxViaje between ${precio[0]} and ${precio[1]}"
-		}
+			precio = precio.split('-')
+			if(precio.size() == 1)
+				 c += "r.valorAproxViaje > 90000" //Caso en que se elija la opcion de mas de 90000
+			else c += "r.valorAproxViaje between ${precio[0]} and ${precio[1]}"
+		}else
 		if(precio != "-1" && c.size() != l){
-			c += " and r.valorAproxViaje between ${precio[0]} and ${precio[1]}"
+			precio = precio.split('-')
+			if(precio.size() == 1)
+				c += " and r.valorAproxViaje > 90000" //Caso en que se elija la opcion de mas de 90000
+			else c += " and r.valorAproxViaje between ${precio[0]} and ${precio[1]}"
 		}
-		if(c.size() == l){
+		
+		if(c.size() == l){ //En caso de que no se seleccione nigun filtro se retornan todas las rutas en la base
 			def routeList = Route.list()
 			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList]
 		}else{
