@@ -101,6 +101,8 @@ div.cara{clear:both; width:940px; height:1px; background-color:#ccc; margin-top:
  
 /* ----- Services (About us) ----- */
  
+a.rutas{text-decoration: none; color: #000000}
+ 
 a.services_list{width:298px; height:85px; display:block; float:left; margin:8px 10px 12px 10px; border:1px #ccc solid; text-decoration:none; color:#333; -webkit-transition:all 0.2s ease-in-out; -moz-transition:all 0.2s ease-in-out; -o-transition:all 0.2s ease-in-out; -ms-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out; position:relative}
 a:hover.services_list{background-color:#1e2022; border:1px #1e2022 solid; color:#e4e4e4; font-weight:100}
 .services_list span{display:block; float:left; width:179px; margin-left:100px; font-size:105%; padding-top:19px}
