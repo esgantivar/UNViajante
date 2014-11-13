@@ -7,13 +7,15 @@
 	src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
 
 <script
-	src="${resource(dir: 'js', file: 'jquery.simplePagination.css')}"></script>
+	src="${resource(dir: 'js', file: 'jquery.tools.min.js')}"></script>
+<script
+	src="${resource(dir: 'js', file: 'smartpaginator.js')}"></script>
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"
 	type="text/css">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}"
 	type="text/css">
 <link rel="stylesheet"
-	href="${resource(dir: 'css', file: 'simplePagination.css')}"
+	href="${resource(dir: 'css', file: 'smartpaginator.css')}"
 	type="text/css">
 <link
 	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext'
@@ -57,6 +59,34 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>	
+    
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#black-contents').css('display', 'none');
+            $('ul li').click(function () {
+                $('#black-contents').css('display', 'none');
+                if ($(this).attr('id') == '3') $('#black-contents').css('display', '');
+            });
+            
+            $('#black').smartpaginator({ totalrecords: ${routes?.size()},
+                recordsperpage: 4,
+                datacontainer: 'listaResultados', 
+                dataelement: 'div',
+                theme: 'black' });
+
+
+        });
+
+        function mouseSobreRuta(objeto)
+        {
+            objeto.style.backgroundColor= '#FFEFDD';
+        }
+        function mouseNoSobreRuta(objeto)
+        {
+            objeto.style.backgroundColor= '#F9F9F9';
+        }
+    </script>
 </head>
 
 <body>
@@ -142,30 +172,30 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 		<g:if test="${routes?.size() > 0}">
 			<h3>Resultados</h3>
-
+			<div id="listaResultados">
 			<g:each var="route" in="${routes}">
-				<div style="padding: 20px; background-color: #FFEFDD; cursor: pointer;">
+			
+				<div style="padding: 20px; background-color: #F9F9F9; border-bottom:1px solid #000000; font-size:20px; 
+				cursor: pointer;" onmouseover="mouseSobreRuta(this)" onmouseleave="mouseNoSobreRuta(this)">
+<%--				 <a class="rutas" href="/UNViajante/route/detalleRuta.gsp">--%>
+				<a class="rutas">
 					<table>
 						<tr>
-							<td><strong>Nombre: </strong> ${route.originCity} - ${route.destinyCity}</td>
-						</tr>
-						<tr>
+							<td style="width: 460px"><strong>Nombre: </strong> ${route.originCity} - ${route.destinyCity}</td>
 							<td><strong>Precio: </strong> ${route.valorAproxViaje}</td>
 						</tr>
 						<tr>
-							<td><strong>Tiempo: </strong> ${route.duracionViaje}</td>
-						</tr>
-						<tr>
+							<td><strong>Tiempo de Viaje: </strong> ${route.duracionViaje} horas</td>
 							<td><strong>Empresa: </strong> ${route.company.nameCompany}</td>
 						</tr>
-						<tr>
-							<td></td>
-						</tr>
 					</table>
+				 </a>
 				</div>
 				
-				<br>
 			</g:each>
+			</div>
+			<div id="black" style="margin: auto;">
+            </div>
 		</g:if>
 		<g:if test="${routes?.size() <= 0}">
 		<h3>No hay resultados para esta busqueda</h3>
