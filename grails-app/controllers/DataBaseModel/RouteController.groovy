@@ -10,11 +10,13 @@ class RouteController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 	def pricesList = ["20000-30000","30000-50000","50000-70000","70000-90000","mas de 90000"]
+	def thereIsConsult = false
     
 	def index(Integer max) {
         //params.max = Math.min(max ?: 10, 100)
         //respond Route.list(params), model:[routeInstanceCount: Route.count()]
-		render view:'rutasIni', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList]
+		render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), 
+			populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, consult:thereIsConsult]
     }
 
     def show(Route routeInstance) {
@@ -46,7 +48,7 @@ class RouteController {
 		def destino = params.destino
 		def empresa = params.empresa
 		def precio = params.precio
-		
+		thereIsConsult = true
 		
 		def c = "from Route as r where "
 		def map = [:]
@@ -87,10 +89,10 @@ class RouteController {
 		
 		if(c.size() == l){ //En caso de que no se seleccione nigun filtro se retornan todas las rutas en la base
 			def routeList = Route.list()
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList]
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList, consult: thereIsConsult]
 		}else{
 			def routeList = Route.findAll(c, map)
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList]
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList, consult: thereIsConsult]
 		}
 		
 	}

@@ -86,10 +86,21 @@ google.maps.event.addDomListener(window, 'load', initialize);
         {
             objeto.style.backgroundColor= '#F9F9F9';
         }
+
+        function finCarga()
+        {
+            if(${consult})
+            {
+            	document.getElementById('divResultados').style.display="block"
+            }else{
+            	document.getElementById('divResultados').style.display="none"
+            }
+        }
+        
     </script>
 </head>
 
-<body>
+<body onload="finCarga()">
 	<div id="header">
 		<div id="header_in">
 			<h1>
@@ -169,7 +180,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			</div>
 			<input type="submit" class="button_submit" value="BUSCAR">
 		</form>
-
+<div id="divResultados" style="display: none;">
 		<g:if test="${routes?.size() > 0}">
 			<h3>Resultados</h3>
 			<div id="listaResultados">
@@ -200,6 +211,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		<g:if test="${routes?.size() <= 0}">
 		<h3>No hay resultados para esta busqueda</h3>
 		</g:if>
+		</div>
 
 		<div class="cara"></div>
 		<%--		<h3>Contact information</h3>--%>
