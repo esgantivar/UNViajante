@@ -7,23 +7,24 @@
 <script src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
 <%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}" type="text/css">--%>
 <%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}" type="text/css">--%>
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<%--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>--%>
 </head>
 <body>
-<div id="header">
-  <div id="header_in">
-    <h1>
-    <a href="inicio.gsp"><asset:image  src="UNViajante.PNG" alt="Generic placeholder imag" width="155px" height="70px" /></a></h1>
-	
-    <div id="menu">
-      <ul>
-        <li><a href="inicio.gsp" class="active">Inicio</a></li>
-        <li><a href="/UNViajante/route">Rutas</a></li>
-        <li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+<%--<div id="header">--%>
+<%--  <div id="header_in">--%>
+<%--    <h1>--%>
+<%--    <a href="inicio.gsp"><asset:image  src="UNViajante.PNG" alt="Generic placeholder imag" width="155px" height="70px" /></a></h1>--%>
+<%--	--%>
+<%--    <div id="menu">--%>
+<%--      <ul>--%>
+<%--        <li><a href="inicio.gsp" class="active">Inicio</a></li>--%>
+<%--        <li><a href="/UNViajante/route">Rutas</a></li>--%>
+<%--        <li><a href="/UNViajante/route">Comentarios</a></li>--%>
+<%--        <li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>--%>
+<%--      </ul>--%>
+<%--    </div>--%>
+<%--  </div>--%>
+<%--</div>--%>
 <div id="main_part">
   <div id="main_part_in">
     <h2>TRANSPORTE INTERMUNICIPAL INTELIGENTE</h2>

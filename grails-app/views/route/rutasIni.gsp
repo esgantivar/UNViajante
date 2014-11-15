@@ -16,9 +16,9 @@
 <link rel="stylesheet"
 	href="${resource(dir: 'css', file: 'simplePagination.css')}"
 	type="text/css">
-<link
-	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext'
-	rel='stylesheet' type='text/css'>
+<%--<link--%>
+<%--	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext'--%>
+<%--	rel='stylesheet' type='text/css'>--%>
 	
 	 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
@@ -70,22 +70,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </head>
 
 <body>
-	<div id="header">
-		<div id="header_in">
-			<h1>
-				<a href="/UNViajante/inicio/inicio.gsp"><asset:image
-							src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"
-							height="70px" /></a>
-			</h1>
-			<div id="menu">
-				<ul>
-					<li><a href="/UNViajante/inicio/inicio.gsp">Inicio</a></li>
-					<li><a href="/UNViajante/route" class="active">Rutas</a></li>
-					<li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<%--	<div id="header">--%>
+<%--		<div id="header_in">--%>
+<%--			<h1>--%>
+<%--				<a href="/UNViajante/inicio/inicio.gsp"><asset:image--%>
+<%--							src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"--%>
+<%--							height="70px" /></a>--%>
+<%--			</h1>--%>
+<%--			<div id="menu">--%>
+<%--				<ul>--%>
+<%--					<li><a href="/UNViajante/inicio/inicio.gsp">Inicio</a></li>--%>
+<%--					<li><a href="/UNViajante/route" class="active">Rutas</a></li>--%>
+<%--					<li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>--%>
+<%--				</ul>--%>
+<%--			</div>--%>
+<%--		</div>--%>
+<%--	</div>--%>
 	<div id="main_part_inner">
 		<div id="main_part_inner_in">
 			<h2>Rutas Intermunicipales</h2>
