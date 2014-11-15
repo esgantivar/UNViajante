@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="DataBaseModel.Route"%>
 <html>
 <head>
 <title>Rutas</title>
@@ -6,10 +7,8 @@
 <script
 	src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
 
-<script
-	src="${resource(dir: 'js', file: 'jquery.tools.min.js')}"></script>
-<script
-	src="${resource(dir: 'js', file: 'smartpaginator.js')}"></script>
+<script src="${resource(dir: 'js', file: 'jquery.tools.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'smartpaginator.js')}"></script>
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"
 	type="text/css">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}"
@@ -20,9 +19,9 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext'
 	rel='stylesheet' type='text/css'>
-	
- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script>
 // This example creates a 2-pixel-wide red polyline showing
 // the path of William Kingsford Smith's first trans-Pacific flight between
 // Oakland, CA, and Brisbane, Australia.
@@ -58,24 +57,25 @@ function initialize() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-    </script>	
-    
-    
-    <script type="text/javascript">
+    </script>
+
+
+<script type="text/javascript">
         $(document).ready(function () {
+            
             $('#black-contents').css('display', 'none');
             $('ul li').click(function () {
                 $('#black-contents').css('display', 'none');
                 if ($(this).attr('id') == '3') $('#black-contents').css('display', '');
             });
-            
-            $('#black').smartpaginator({ totalrecords: ${routes?.size()},
+
+
+            $('#black').smartpaginator(
+               { totalrecords: ${routes?.size()},
                 recordsperpage: 4,
                 datacontainer: 'listaResultados', 
                 dataelement: 'div',
                 theme: 'black' });
-
-
         });
 
         function mouseSobreRuta(objeto)
@@ -89,12 +89,35 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
         function finCarga()
         {
-            if(${consult})
+        	if(${consult})
             {
             	document.getElementById('divResultados').style.display="block"
             }else{
             	document.getElementById('divResultados').style.display="none"
             }
+        	if('${tabActiva}'=="normal")
+            {
+        		document.getElementById('divBusquedaAvanzada').style.display="none"
+                document.getElementById('divBusqueda').style.display="block"
+            }else{
+            	document.getElementById('divBusquedaAvanzada').style.display="block"
+                document.getElementById('divBusqueda').style.display="none"
+            }
+        }
+
+        function verBusqueda()
+        {
+        	document.getElementById('divBusquedaAvanzada').style.display="none"
+            document.getElementById('divBusqueda').style.display="block"
+            document.getElementById('hidTabActiva').style.display="normal"
+            initialize();
+        }
+
+        function verBusquedaAvanzada()
+        {
+        	document.getElementById('divBusquedaAvanzada').style.display="block"
+        	document.getElementById('divBusqueda').style.display="none"
+        	document.getElementById('hidTabActiva').style.display="avanzada"
         }
         
     </script>
@@ -105,8 +128,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		<div id="header_in">
 			<h1>
 				<a href="/UNViajante/inicio/inicio.gsp"><asset:image
-							src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"
-							height="70px" /></a>
+						src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"
+						height="70px" /></a>
 			</h1>
 			<div id="menu">
 				<ul>
@@ -123,95 +146,120 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		</div>
 	</div>
 	<div id="content_inner">
-		<h3>Busca tu Ruta</h3>
-		<form method="post" class="formit" action="/UNViajante/route/consulta">
-			<div>
-				<table>
-					<tr>
-						<td><label>EMPRESA:</label></td>
-						<td><label>ORIGEN:</label></td>
-						<td><label>DESTINO:</label></td>
-						<td><label>PRECIO:</label></td>
-					</tr>
-
-					<tr>
-						<td><select name="empresa">
-								<option value="-1">Selecciona..</option>
-								<g:each var="company" in="${companies}">
-
-									<option value="${company.nameCompany}">
-										${company.nameCompany}
-									</option>
-
-								</g:each>
-						</select></td>
-						<td><select name="origen">
-								<option value="-1">Selecciona..</option>
-								<g:each var="population" in="${populations}">
-
-									<option value="${population.namePCenter}">
-										${population.namePCenter}
-									</option>
-
-								</g:each>
-						</select></td>
-						<td><select name="destino">
-								<option value="-1">Selecciona..</option>
-								<g:each var="population" in="${populations}">
-
-									<option value="${population.namePCenter}">
-										${population.namePCenter}
-									</option>
-
-								</g:each>
-						</select></td>
-						<td><select name="precio">
-								<option value="-1">Selecciona..</option>
-								<g:each var="price" in="${prices}">
-
-									<option value="${price}">
-										${price}
-									</option>
-
-								</g:each>
-						</select></td>
-					</tr>
-				</table>
-			</div>
-			<input type="submit" class="button_submit" value="BUSCAR">
-		</form>
-<div id="divResultados" style="display: none;">
-		<g:if test="${routes?.size() > 0}">
-			<h3>Resultados</h3>
-			<div id="listaResultados">
-			<g:each var="route" in="${routes}">
-			
-				<div style="padding: 20px; background-color: #F9F9F9; border-bottom:1px solid #000000; font-size:20px; 
-				cursor: pointer;" onmouseover="mouseSobreRuta(this)" onmouseleave="mouseNoSobreRuta(this)">
-<%--				 <a class="rutas" href="/UNViajante/route/detalleRuta.gsp">--%>
-				<a class="rutas">
+		<div id="divPestañasBusqueda">
+			<input type="button" class="button" value="BUSQUEDA" onclick="verBusqueda()"> 
+			<input type="button" class="button" value="BUSQUEDA AVANZADA" onclick="verBusquedaAvanzada()">
+		</div>
+		<div id="divBusquedaAvanzada" style="display: block">
+			<h3>Busca tu Ruta</h3>
+			<form method="post" class="formit"
+				action="/UNViajante/route/consulta">
+				<input id="hidTabActiva" type="hidden" value="">
+				<div>
 					<table>
 						<tr>
-							<td style="width: 460px"><strong>Nombre: </strong> ${route.originCity} - ${route.destinyCity}</td>
-							<td><strong>Precio: </strong> ${route.valorAproxViaje}</td>
+							<td><label>EMPRESA:</label></td>
+							<td><label>ORIGEN:</label></td>
+							<td><label>DESTINO:</label></td>
+							<td><label>PRECIO:</label></td>
 						</tr>
+
 						<tr>
-							<td><strong>Tiempo de Viaje: </strong> ${route.duracionViaje} horas</td>
-							<td><strong>Empresa: </strong> ${route.company.nameCompany}</td>
+							<td><select name="empresa">
+									<option value="-1">Selecciona..</option>
+									<g:each var="company" in="${companies}">
+
+										<option value="${company.nameCompany}">
+											${company.nameCompany}
+										</option>
+
+									</g:each>
+							</select></td>
+							<td><select name="origen">
+									<option value="-1">Selecciona..</option>
+									<g:each var="population" in="${populations}">
+
+										<option value="${population.namePCenter}">
+											${population.namePCenter}
+										</option>
+
+									</g:each>
+							</select></td>
+							<td><select name="destino">
+									<option value="-1">Selecciona..</option>
+									<g:each var="population" in="${populations}">
+
+										<option value="${population.namePCenter}">
+											${population.namePCenter}
+										</option>
+
+									</g:each>
+							</select></td>
+							<td><select name="precio">
+									<option value="-1">Selecciona..</option>
+									<g:each var="price" in="${prices}">
+
+										<option value="${price}">
+											${price}
+										</option>
+
+									</g:each>
+							</select></td>
 						</tr>
 					</table>
-				 </a>
 				</div>
-				
-			</g:each>
-			</div>
-			<div id="black" style="margin: auto;">
-            </div>
-		</g:if>
-		<g:if test="${routes?.size() <= 0}">
-		<h3>No hay resultados para esta busqueda</h3>
-		</g:if>
+				<input type="submit" class="button_submit" value="BUSCAR">
+			</form>
+			
+
 		</div>
+
+		<div id="divBusqueda" style="display: block">
+			<div class="mapit" id="mapa" style="width: 938px; height: 360px">
+				<%--			<iframe width="938" height="360" frameborder="0" scrolling="no"--%>
+				<%--				marginheight="0" marginwidth="0"--%>
+				<%--				src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=San+Francisco,+CA,+United+States&amp;aq=0&amp;oq=san+f&amp;sll=37.0625,-95.677068&amp;sspn=45.553578,93.076172&amp;ie=UTF8&amp;hq=&amp;ll=37.77493,-122.419416&amp;z=14&amp;output=embed">--%>
+				<%--			</iframe>--%>
+			</div>
+
+		</div>
+		
+		
+		<div id="divResultados" style="display: none;">
+				<g:if test="${routes?.size() > 0}">
+					<h3>Resultados</h3>
+					<div id="listaResultados">
+						<g:each var="route" in="${routes}">
+
+							<div
+								style="padding: 20px; background-color: #F9F9F9; border-bottom: 1px solid #000000; font-size: 20px; cursor: pointer;"
+								onmouseover="mouseSobreRuta(this)"
+								onmouseleave="mouseNoSobreRuta(this)">
+								<%--				 <a class="rutas" href="/UNViajante/route/detalleRuta.gsp">--%>
+								<a class="rutas">
+									<table>
+										<tr>
+											<td style="width: 460px"><strong>Nombre: </strong> ${route.originCity}
+												- ${route.destinyCity}</td>
+											<td><strong>Precio: </strong> ${route.valorAproxViaje}</td>
+										</tr>
+										<tr>
+											<td><strong>Tiempo de Viaje: </strong> ${route.duracionViaje}
+												horas</td>
+											<td><strong>Empresa: </strong> ${route.company.nameCompany}</td>
+										</tr>
+									</table>
+								</a>
+							</div>
+
+						</g:each>
+					</div>
+					<div id="black" style="margin: auto;"></div>
+				</g:if>
+				<g:if test="${routes?.size() <= 0}">
+					<h3>No hay resultados para esta busqueda</h3>
+				</g:if>
+			</div>
 
 		<div class="cara"></div>
 		<%--		<h3>Contact information</h3>--%>
@@ -226,12 +274,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		<%--			<span class="ico_iphone"><b>(+123) 456 789 012</b></span>--%>
 		<%--		</div>--%>
 		<hr class="cleanit">
-		<div class="mapit" id="mapa" style="width:938px; height: 360px">
-<%--			<iframe width="938" height="360" frameborder="0" scrolling="no"--%>
-<%--				marginheight="0" marginwidth="0"--%>
-<%--				src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=San+Francisco,+CA,+United+States&amp;aq=0&amp;oq=san+f&amp;sll=37.0625,-95.677068&amp;sspn=45.553578,93.076172&amp;ie=UTF8&amp;hq=&amp;ll=37.77493,-122.419416&amp;z=14&amp;output=embed">--%>
-<%--			</iframe>--%>
-		</div>
+
 	</div>
 	<hr class="cleanit">
 	<div id="footer">

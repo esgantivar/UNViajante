@@ -4,5 +4,10 @@ class GeographicPoint {
 	int idGeoPoint
 	double latitude
 	double longitude
-	String referenceSystem
+	
+	static constraints = {
+		latitude(nullable: true)
+		longitude(nullable: true)
+		idGeoPoint(nullable: true)
+	}
 }

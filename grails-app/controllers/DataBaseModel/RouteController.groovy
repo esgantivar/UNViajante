@@ -15,8 +15,10 @@ class RouteController {
 	def index(Integer max) {
         //params.max = Math.min(max ?: 10, 100)
         //respond Route.list(params), model:[routeInstanceCount: Route.count()]
+		def thereIsConsult = false
+		def tabActive = "normal"
 		render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), 
-			populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, consult:thereIsConsult]
+			populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, consult:thereIsConsult, routes: [], tabActiva: tabActive]
     }
 
     def show(Route routeInstance) {
@@ -48,6 +50,7 @@ class RouteController {
 		def destino = params.destino
 		def empresa = params.empresa
 		def precio = params.precio
+		def tabActive = params.hidTabActiva
 		thereIsConsult = true
 		
 		def c = "from Route as r where "
@@ -89,10 +92,10 @@ class RouteController {
 		
 		if(c.size() == l){ //En caso de que no se seleccione nigun filtro se retornan todas las rutas en la base
 			def routeList = Route.list()
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList, consult: thereIsConsult]
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList, consult: thereIsConsult, tabActiva: tabActive]
 		}else{
 			def routeList = Route.findAll(c, map)
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList, consult: thereIsConsult]
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList, consult: thereIsConsult, tabActiva: tabActive]
 		}
 		
 	}

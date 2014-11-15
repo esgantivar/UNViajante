@@ -1,6 +1,6 @@
 package DataBaseModel
 
-class Route {
+class Route extends GeographicPoint{
 	int idRoute
 	int positionsAvaiable
 	String originCity
@@ -19,6 +19,7 @@ class Route {
 		idRoute(nullable:true)
 		positionsAvaiable(nullable: true) 
 		departureTimes(nullable:true)
+		
 	}
 	
 	
