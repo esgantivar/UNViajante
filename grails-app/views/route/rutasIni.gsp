@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="layout" content="main2"/>
 <title>Rutas</title>
-<meta charset="utf-8">
+<%--<meta charset="utf-8">--%>
 <script
 	src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
 
 <script
 	src="${resource(dir: 'js', file: 'jquery.simplePagination.css')}"></script>
-<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"
-	type="text/css">
-<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}"
-	type="text/css">
+<%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"--%>
+<%--	type="text/css">--%>
+<%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}"--%>
+<%--	type="text/css">--%>
 <link rel="stylesheet"
 	href="${resource(dir: 'css', file: 'simplePagination.css')}"
 	type="text/css">
@@ -171,15 +172,15 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		</div>
 	</div>
 	<hr class="cleanit">
-	<div id="footer">
-		<div id="footer_in">
-			<p>
-				Copyright &copy; 2045 <a href="#">Site Name</a>. All Rights Reserved
-			</p>
-			<span>Design By: <a href="http://ries.cz">Vil&eacute;m
-					Ries</a></span>
-		</div>
-	</div>
+<%--	<div id="footer">--%>
+<%--		<div id="footer_in">--%>
+<%--			<p>--%>
+<%--				Copyright &copy; 2045 <a href="#">Site Name</a>. All Rights Reserved--%>
+<%--			</p>--%>
+<%--			<span>Design By: <a href="http://ries.cz">Vil&eacute;m--%>
+<%--					Ries</a></span>--%>
+<%--		</div>--%>
+<%--	</div>--%>
 	<script>
 		$(function() {
 			$("ul.controls").tabs("div.testimonials > div");
