@@ -26,10 +26,10 @@
 			
 		    <div id="menu">
 		      <ul>
-		        <li><a href="inicio.gsp" class="active">Inicio</a></li>
+		        <li><a href="inicio.gsp"class="active"> Inicio</a></li>
 		        <li><a href="/UNViajante/route">Rutas</a></li>
-		        <li><a href="comentarios.gsp">Comentarios</a></li>
-		        <li><a href="nosotros.gsp">Nosotros</a></li>
+		        <li><a href="comentarios">Comentarios</a></li>
+		        <li><a href="nosotros">Nosotros</a></li>
 		      </ul>
 		    </div>
 		  </div>

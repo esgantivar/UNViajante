@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="layout" content="main2"/>
+<%--<meta name="layout" content="main2"/>--%>
 <title>Rutas</title>
-<%--<meta charset="utf-8">--%>
+<meta charset="utf-8">
 <script
 	src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
 
 <script
 	src="${resource(dir: 'js', file: 'jquery.simplePagination.css')}"></script>
-<%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"--%>
-<%--	type="text/css">--%>
-<%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}"--%>
-<%--	type="text/css">--%>
-<link rel="stylesheet"
-	href="${resource(dir: 'css', file: 'simplePagination.css')}"
-	type="text/css">
-<%--<link--%>
-<%--	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext'--%>
-<%--	rel='stylesheet' type='text/css'>--%>
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}" type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}" type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'simplePagination.css')}" type="text/css"> <link>
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'fonts.css')}" type="text/css">
 	
 	 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
@@ -70,22 +64,23 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </head>
 
 <body>
-<%--	<div id="header">--%>
-<%--		<div id="header_in">--%>
-<%--			<h1>--%>
-<%--				<a href="/UNViajante/inicio/inicio.gsp"><asset:image--%>
-<%--							src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"--%>
-<%--							height="70px" /></a>--%>
-<%--			</h1>--%>
-<%--			<div id="menu">--%>
-<%--				<ul>--%>
-<%--					<li><a href="/UNViajante/inicio/inicio.gsp">Inicio</a></li>--%>
-<%--					<li><a href="/UNViajante/route" class="active">Rutas</a></li>--%>
-<%--					<li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>--%>
-<%--				</ul>--%>
-<%--			</div>--%>
-<%--		</div>--%>
-<%--	</div>--%>
+	<div id="header">
+		<div id="header_in">
+			<h1>
+				<a href="/UNViajante/inicio/inicio.gsp"><asset:image
+							src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"
+							height="70px" /></a>
+			</h1>
+			<div id="menu">
+				<ul>
+					<li><a href="/UNViajante/inicio/inicio.gsp">Inicio</a></li>
+					<li><a href="/UNViajante/route" class="active">Rutas</a></li>
+					<li><a href="/UNViajante/inicio/comentarios.gsp">Comentarios</a></li>
+					<li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div id="main_part_inner">
 		<div id="main_part_inner_in">
 			<h2>Rutas Intermunicipales</h2>
@@ -151,18 +146,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		</form>
 
 		<div class="cara"></div>
-
-		<%--		<h3>Contact information</h3>--%>
-		<%--		<div class="contactinfo">--%>
-		<%--			<span class="ico_mapmark"><b>15th Avenue, 15 362, San--%>
-		<%--					Francisco</b></span>--%>
-		<%--		</div>--%>
-		<%--		<div class="contactinfo">--%>
-		<%--			<span class="ico_message"><b>email@domain.com</b></span>--%>
-		<%--		</div>--%>
-		<%--		<div class="contactinfo">--%>
-		<%--			<span class="ico_iphone"><b>(+123) 456 789 012</b></span>--%>
-		<%--		</div>--%>
 		<hr class="cleanit">
 		<div class="mapit" id="mapa" style="width:938px; height: 360px">
 <%--			<iframe width="938" height="360" frameborder="0" scrolling="no"--%>
