@@ -1,6 +1,6 @@
 package DataBaseModel
 
-class Route extends GeographicPoint{
+class Route{
 	int idRoute
 	int positionsAvaiable
 	String originCity

@@ -48,12 +48,12 @@ class BootStrap {
 		//Ciudades
 		
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "91001", namePCenter: "Leticia"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "05001", namePCenter: "Medellin"/*, latitude: 6.27907, longitude: -75.57113 */))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "05001", namePCenter: "Medellin", latitude: 6.27907, longitude: -75.57113 ))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "05002", namePCenter: "Abejorral"))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "05088", namePCenter: "Bello"))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "81001", namePCenter: "Arauca"))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "08001", namePCenter: "Barranquilla"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "11001", namePCenter: "Bogota"/*, latitude: 4.654052 , longitude: -74.11524*/))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "11001", namePCenter: "Bogota", latitude: 4.654052 , longitude: -74.11524))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "13001", namePCenter: "Cartagena"))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "15001", namePCenter: "Tunja"))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "17001", namePCenter: "Manizales"))

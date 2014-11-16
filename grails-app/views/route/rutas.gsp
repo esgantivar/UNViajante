@@ -241,7 +241,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 										<tr>
 											<td style="width: 460px"><strong>Nombre: </strong> ${route.originCity}
 												- ${route.destinyCity}</td>
-											<td><strong>Precio: </strong> ${route.valorAproxViaje}</td>
+											<td><strong>Precio: </strong> $${route.valorAproxViaje}</td>
 										</tr>
 										<tr>
 											<td><strong>Tiempo de Viaje: </strong> ${route.duracionViaje}
