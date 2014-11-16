@@ -9,7 +9,8 @@ class Route extends GeographicPoint{
 	int valorAproxViaje
 	TransportTerminal targetTerminal
 	TransportTerminal sourceTerminal
-	final Map departureTimes = ["modified": false, "lun":[], "mar":[], "mie":[], "jue":[], "vie":[], "sab":[], "dom":[]]
+	def departureTimes = [:]
+	
 	static belongsTo = [company:Company/*, travel: GeographicLine*/]
 	static hasMany = [officialStops:BusStop,intermediateTerminal:TransportTerminal]
 	
