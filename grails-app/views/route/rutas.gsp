@@ -150,7 +150,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			<input type="button" class="button" value="BUSQUEDA" onclick="verBusqueda()"> 
 			<input type="button" class="button" value="BUSQUEDA AVANZADA" onclick="verBusquedaAvanzada()">
 		</div>
-		<div id="divBusquedaAvanzada" style="display: block">
+		<div id="divBusquedaAvanzada" style="display: none">
 			<h3>Busca tu Ruta</h3>
 			<form method="post" class="formit"
 				action="/UNViajante/route/consulta">
@@ -235,8 +235,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 								style="padding: 20px; background-color: #F9F9F9; border-bottom: 1px solid #000000; font-size: 20px; cursor: pointer;"
 								onmouseover="mouseSobreRuta(this)"
 								onmouseleave="mouseNoSobreRuta(this)">
-								<%--				 <a class="rutas" href="/UNViajante/route/detalleRuta.gsp">--%>
-								<a class="rutas">
+								<g:link class="rutas" action="detalleRuta" id="${route.id}">
+<%--								<a class="rutas" href="/UNViajante/route/detalleRuta?idRuta=${route.id}">--%>
+<%--								<a class="rutas">--%>
+<%--								<form  method="post" class="formit"--%>
+<%--									action="/UNViajante/route/consulta">--%>
 									<table>
 										<tr>
 											<td style="width: 460px"><strong>Nombre: </strong> ${route.originCity}
@@ -249,7 +252,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 											<td><strong>Empresa: </strong> ${route.company.nameCompany}</td>
 										</tr>
 									</table>
-								</a>
+<%--							    </form>--%>
+</g:link>
+<%--								</a>--%>
 							</div>
 
 						</g:each>

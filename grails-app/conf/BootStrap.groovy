@@ -4,9 +4,15 @@ import DataBaseModel.PopulationCenter
 import DataBaseModel.Route
 import DataBaseModel.GeographicLine
 
+import groovy.sql.Sql
+
 class BootStrap {
 	
 	def init = { servletContext ->
+		
+//		Sql sql = Sql.newInstance('jdbc:h2:mem:devDb', 'sa',
+//		'', 'org.h2.Driver')
+//		sql.execute('ALTER TABLE ROUTE ALTER COLUMN DEPARTURE_TIMES BINARY(10000000)')
 		
 		
 		//Departamentos
@@ -135,7 +141,8 @@ class BootStrap {
 	}
 	
 	def agregarRuta(ruta, company, travel){
-		ruta.departureTimes = agregarHorarios()
+		ruta.departureTimes = agregarHorarios() // ["lun":["7:30","8:30"]]
+		ruta.save(flush:true)
 		if(company != null){
 			def comp = Company.findByNameCompany(company)
 			comp.addToRoutesAvailable(ruta).save(flush:true)

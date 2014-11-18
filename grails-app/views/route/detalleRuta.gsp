@@ -18,54 +18,53 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext'
 	rel='stylesheet' type='text/css'>
-	
-	 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script>
-// This example creates a 2-pixel-wide red polyline showing
-// the path of William Kingsford Smith's first trans-Pacific flight between
-// Oakland, CA, and Brisbane, Australia.
 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script>
+	// This example creates a 2-pixel-wide red polyline showing
+	// the path of William Kingsford Smith's first trans-Pacific flight between
+	// Oakland, CA, and Brisbane, Australia.
 <%--HYBRID 	This map type displays a transparent layer of major streets on satellite images.--%>
+	
 <%--ROADMAP 	This map type displays a normal street map.--%>
+	
 <%--SATELLITE 	This map type displays satellite images.--%>
+	
 <%--TERRAIN 	This map type displays maps with physical features such as terrain and vegetation.--%>
-
+	
 <%--https://developers.google.com/maps/documentation/javascript/reference--%>
+	function initialize() {
+		var mapOptions = {
+			zoom : 10,
+			center : new google.maps.LatLng(4.608630556, -74.07670556),
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		};
 
-function initialize() {
-  var mapOptions = {
-    zoom: 10,
-    center: new google.maps.LatLng(4.608630556, -74.07670556),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
+		var map = new google.maps.Map(document.getElementById('mapa'),
+				mapOptions);
 
-  var map = new google.maps.Map(document.getElementById('mapa'),
-      mapOptions);
+		var flightPlanCoordinates = [
+				new google.maps.LatLng(4.608630556, -74.07670556),
+				new google.maps.LatLng(4.608555556, -74.07658889),
+				new google.maps.LatLng(4.608711111, -74.07648333),
+				new google.maps.LatLng(4.608861111, -74.07669722),
+				new google.maps.LatLng(4.608791667, -74.07674722),
+				new google.maps.LatLng(4.608630556, -74.07670556) ];
+		var flightPath = new google.maps.Polyline({
+			path : flightPlanCoordinates,
+			geodesic : true,
+			strokeColor : '#FF0000',
+			strokeOpacity : 1.0,
+			strokeWeight : 2
+		});
 
-  var flightPlanCoordinates = [
-    new google.maps.LatLng(4.608630556, -74.07670556),
-    new google.maps.LatLng(4.608555556, -74.07658889),
-    new google.maps.LatLng(4.608711111, -74.07648333),
-    new google.maps.LatLng(4.608861111, -74.07669722),
-	new google.maps.LatLng(4.608791667, -74.07674722),
-	new google.maps.LatLng(4.608630556, -74.07670556)
-  ];
-  var flightPath = new google.maps.Polyline({
-    path: flightPlanCoordinates,
-    geodesic: true,
-    strokeColor: '#FF0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  });
+		flightPath.setMap(map);
+	}
 
-  flightPath.setMap(map);
-}
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
-google.maps.event.addDomListener(window, 'load', initialize);
 
-    </script>	
-	
-	
 </head>
 
 <body>
@@ -73,8 +72,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		<div id="header_in">
 			<h1>
 				<a href="/UNViajante/inicio/inicio.gsp"><asset:image
-							src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"
-							height="70px" /></a>
+						src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"
+						height="70px" /></a>
 			</h1>
 			<div id="menu">
 				<ul>
@@ -92,10 +91,32 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	</div>
 	<div id="content_inner">
 		<h3>Informacion de la ruta</h3>
-		
-		...
-		
-		<input type="button" class="button_submit" value="VOLVER" onclick="history.back()">
+
+		<table>
+			<tr>
+				<td><strong>Nombre: </strong>${route.originCity}-${route.destinyCity}</td>
+				<td><strong>Tiempo de Viaje: </strong>${route.duracionViaje} horas</td>
+			</tr>
+			<tr>
+				<td><strong>Precio: </strong>$ ${route.valorAproxViaje}</td>
+				<td><strong>Empresa: </strong>${route.company.nameCompany}</td>
+			</tr>
+			<tr>
+				<td colspan="2"><strong>Horarios</strong></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<ul>
+				<g:each  var = "hora" in="${route.departureTimes.values()}">
+					<li>${hora}</li>
+				</g:each>
+				</ul>
+				</td>
+			</tr>
+		</table>
+
+		<input type="button" class="button_submit" value="VOLVER"
+			onclick="history.back()">
 
 		<div class="cara"></div>
 
@@ -111,12 +132,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		<%--			<span class="ico_iphone"><b>(+123) 456 789 012</b></span>--%>
 		<%--		</div>--%>
 		<hr class="cleanit">
-		<div class="mapit" id="mapa" style="width:938px; height: 360px">
-<%--			<iframe width="938" height="360" frameborder="0" scrolling="no"--%>
-<%--				marginheight="0" marginwidth="0"--%>
-<%--				src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=San+Francisco,+CA,+United+States&amp;aq=0&amp;oq=san+f&amp;sll=37.0625,-95.677068&amp;sspn=45.553578,93.076172&amp;ie=UTF8&amp;hq=&amp;ll=37.77493,-122.419416&amp;z=14&amp;output=embed">--%>
-<%--			</iframe>--%>
-		</div>
 	</div>
 	<hr class="cleanit">
 	<div id="footer">

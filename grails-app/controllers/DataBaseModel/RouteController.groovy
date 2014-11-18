@@ -100,6 +100,13 @@ class RouteController {
 		
 	}
 	
+	def detalleRuta(){
+		def idRuta =  params.id
+		def ruta = Route.findById(idRuta)
+		print ruta.departureTimes
+		render view: 'detalleRuta', model:[route: ruta]
+	}
+	
     @Transactional
     def save(Route routeInstance) {
         if (routeInstance == null) {

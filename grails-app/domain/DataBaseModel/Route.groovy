@@ -9,7 +9,7 @@ class Route{
 	int valorAproxViaje
 	TransportTerminal targetTerminal
 	TransportTerminal sourceTerminal
-	def departureTimes = [:]
+	HashMap departureTimes 
 	
 	static belongsTo = [company:Company/*, travel: GeographicLine*/]
 	static hasMany = [officialStops:BusStop,intermediateTerminal:TransportTerminal]
@@ -19,7 +19,7 @@ class Route{
 		sourceTerminal(nullable: true)
 		idRoute(nullable:true)
 		positionsAvaiable(nullable: true) 
-		departureTimes(nullable:true)
+		departureTimes(nullable: true,sqlType:'VARCHAR(max)')
 		
 	}
 	
