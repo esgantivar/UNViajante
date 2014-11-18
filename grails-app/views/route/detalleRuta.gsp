@@ -107,7 +107,7 @@
 			<tr>
 				<td colspan="2">
 				<ul>
-				<g:each  var = "hora" in="${route.departureTimes.values()}">
+				<g:each  var = "hora" in="${horas}">
 					<li>${hora}</li>
 				</g:each>
 				</ul>

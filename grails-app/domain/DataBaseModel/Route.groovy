@@ -19,9 +19,11 @@ class Route{
 		sourceTerminal(nullable: true)
 		idRoute(nullable:true)
 		positionsAvaiable(nullable: true) 
-		departureTimes(nullable: true,sqlType:'VARCHAR(max)')
+		departureTimes(nullable: true)
 		
 	}
-	
+	static mapping={
+		departureTimes column: 'departureTimes', sqlType:'BINARY(1000)'
+	}
 	
 }

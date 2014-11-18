@@ -103,8 +103,9 @@ class RouteController {
 	def detalleRuta(){
 		def idRuta =  params.id
 		def ruta = Route.findById(idRuta)
-		print ruta.departureTimes
-		render view: 'detalleRuta', model:[route: ruta]
+		def hours =  ruta.departureTimes.values() as List
+		hours =  hours[1..hours.size()-1]
+		render view: 'detalleRuta', model:[route: ruta, horas: hours]
 	}
 	
     @Transactional
