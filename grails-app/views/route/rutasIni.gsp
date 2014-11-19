@@ -17,6 +17,8 @@
 	<script>
 		var map;
 		var myCenter=new google.maps.LatLng(4.6546188,-74.1152346);
+		var num = 0;
+		var markers = [];
 		
 				
 		function initialize()
@@ -40,13 +42,56 @@
 		    position: location,
 		    map: map,
 		  });
+  		markers.push(marker);
+		  
 		  
 		  
 		  var infowindow = new google.maps.InfoWindow({
 		    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
 		  });
-		  infowindow.open(map,marker);
+		  //infowindow.open(map,marker);
+		  
+		  var origen = new google.maps.InfoWindow({
+		  	content:'Origen'
+		  });
+		  
+		  var destino = new google.maps.InfoWindow({
+		  	content:'Destino'
+		  });
+		  
+		  if(num==0){
+		  	origen.open(map,marker);
+		  	num++;
+		  }
+		  else if(num==1){
+		  	destino.open(map,marker);
+		  	num++;
+		  }
+		  else if(num>1){
+		  	//borrar markers
+		  	deleteMarkers();
+		  	num=0;
+		  }
 		}
+		
+		// Sets the map on all markers in the array.
+		function setAllMap(map) {
+		  for (var i = 0; i < markers.length; i++) {
+		    markers[i].setMap(map);
+		  }
+		}
+		
+		// Removes the markers from the map, but keeps them in the array.
+		function clearMarkers() {
+		  setAllMap(null);
+		}
+
+		// Deletes all markers in the array by removing references to them.
+		function deleteMarkers() {
+		  clearMarkers();
+		  markers = [];
+		}
+		
 		
 		google.maps.event.addDomListener(window, 'load', initialize);
 		
