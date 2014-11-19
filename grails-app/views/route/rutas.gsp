@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@page import="DataBaseModel.Route"%>
+<%@page import="grails.converters.JSON"%>
 <html>
 <head>
 <title>Rutas</title>
@@ -26,33 +27,48 @@
 // the path of William Kingsford Smith's first trans-Pacific flight between
 // Oakland, CA, and Brisbane, Australia.
 
+var pop = '${populations as JSON}';
+
+pop = pop.replace(/&(lt|gt|quot);/g, function (m, p) { //Se reemplazan los "&quot;" con comillas dobles
+    return (p == "lt")? "<" : (p == "gt") ? ">" : '"';
+});
+ 
+var populations = JSON.parse(pop);
+for(var i in populations){
+	document.write(populations[i].namePCenter);
+}
+
+
+
 function initialize() {
-  var mapOptions = {
-    zoom: 10,
-    center: new google.maps.LatLng(4.608630556, -74.07670556),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
+	var mapOptions = {
+	  zoom: 10,
+	  center: new google.maps.LatLng(4.608630556, -74.07670556),
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	
+	var map = new google.maps.Map(document.getElementById('mapa'),
+	    mapOptions);
+	
+	
+	var flightPlanCoordinates = [        	
+	   	new google.maps.LatLng(4.608630556, -74.07670556),
+	   	new google.maps.LatLng(4.608555556, -74.07658889),
+	   	new google.maps.LatLng(4.608711111, -74.07648333),
+	   	new google.maps.LatLng(4.608861111, -74.07669722),
+		new google.maps.LatLng(4.608791667, -74.07674722),
+		new google.maps.LatLng(4.608630556, -74.07670556)
+	];
 
-  var map = new google.maps.Map(document.getElementById('mapa'),
-      mapOptions);
-
-  var flightPlanCoordinates = [
-    new google.maps.LatLng(4.608630556, -74.07670556),
-    new google.maps.LatLng(4.608555556, -74.07658889),
-    new google.maps.LatLng(4.608711111, -74.07648333),
-    new google.maps.LatLng(4.608861111, -74.07669722),
-	new google.maps.LatLng(4.608791667, -74.07674722),
-	new google.maps.LatLng(4.608630556, -74.07670556)
-  ];
-  var flightPath = new google.maps.Polyline({
-    path: flightPlanCoordinates,
-    geodesic: true,
-    strokeColor: '#FF0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  });
-
-  flightPath.setMap(map);
+	var flightPath = new google.maps.Polyline({
+	    path: flightPlanCoordinates,
+	    geodesic: true,
+	    strokeColor: '#FF0000',
+	    strokeOpacity: 1.0,
+	    strokeWeight: 2
+	});
+	
+	flightPath.setMap(map);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

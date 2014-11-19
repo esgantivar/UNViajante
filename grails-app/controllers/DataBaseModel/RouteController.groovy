@@ -3,6 +3,7 @@ package DataBaseModel
 
 
 import static org.springframework.http.HttpStatus.*
+import grails.converters.JSON
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -17,6 +18,7 @@ class RouteController {
         //respond Route.list(params), model:[routeInstanceCount: Route.count()]
 		def thereIsConsult = false
 		def tabActive = "normal"
+		
 		render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), 
 			populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, consult:thereIsConsult, routes: [], tabActiva: tabActive]
     }
