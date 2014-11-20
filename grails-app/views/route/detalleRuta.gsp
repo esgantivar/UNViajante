@@ -92,46 +92,115 @@
 	<div id="content_inner">
 		<h3>Informacion de la ruta</h3>
 
-		<table>
+		<table style="font-size: 20px">
 			<tr>
-				<td><strong>Nombre: </strong>${route.originCity}-${route.destinyCity}</td>
-				<td><strong>Tiempo de Viaje: </strong>${route.duracionViaje} horas</td>
+				<td style="text-align:center ;width: 460px"><strong>Origen-Destino: </strong> ${route.originCity}-${route.destinyCity}</td>
+				<td style="text-align:center ;width: 460px"><strong>Tiempo de Viaje: </strong> ${route.duracionViaje}
+					horas</td>
+				<td style="text-align:center ;width: 460px"><strong>Telefono: </strong>${route.company.telephoneNumber.toString().replace(' ', '-')} </td>
 			</tr>
 			<tr>
-				<td><strong>Precio: </strong>$ ${route.valorAproxViaje}</td>
-				<td><strong>Empresa: </strong>${route.company.nameCompany}</td>
-			</tr>
-			<tr>
-				<td colspan="2"><strong>Horarios</strong></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-				<ul>
-				<g:each  var = "hora" in="${horas}">
-					<li>${hora}</li>
-				</g:each>
-				</ul>
-				</td>
+				<td style="text-align:center ;width: 460px"><strong>Precio: </strong>$ ${route.valorAproxViaje} pesos</td>
+				<td style="text-align:center ;width: 460px"><strong>Empresa: </strong> ${route.company.nameCompany}</td>
+				<td style="text-align:center ;width: 460px"><strong>Direccion: </strong>${route.company.address} </td>
 			</tr>
 		</table>
+		
+		<div class="cara"></div>
+		<hr class="cleanit">
+		
+		<table style="font-size: 20px; text-align: center;">
+			<tr style="border-bottom: 1px solid #000000">
+				<td colspan="7" style="text-align: center;"><strong>Horarios de Salida</strong></td>
+			</tr>
+			<tr>
+				<td style="width: 140px; text-align: center;"><strong>Lunes</strong>
+					<ul>
+					
+						<g:each var="hora" in="${horas[0]}">
+
+							<li>
+								${hora}
+							</li>
+
+						</g:each>
+					</ul></td>
+				<td style="width: 140px; text-align: center;"><strong>Martes</strong>
+					<ul>
+						<g:each var="hora" in="${horas[1]}">
+
+							<li>
+								${hora}
+							</li>
+
+						</g:each>
+					</ul></td>
+				<td style="width: 140px; text-align: center;"><strong>Miercoles</strong>
+					<ul>
+						<g:each var="hora" in="${horas[2]}">
+
+							<li>
+								${hora}
+							</li>
+
+						</g:each>
+					</ul></td>
+				<td style="width: 140px; text-align: center;"><strong>Jueves</strong>
+					<ul>
+						<g:each var="hora" in="${horas[3]}">
+
+							<li>
+								${hora}
+							</li>
+
+						</g:each>
+					</ul></td>
+				<td style="width: 140px; text-align: center;"><strong>Viernes</strong>
+					<ul>
+						<g:each var="hora" in="${horas[4]}">
+
+							<li>
+								${hora}
+							</li>
+
+						</g:each>
+					</ul></td>
+				<td style="width: 140px; text-align: center;"><strong>Sabado</strong>
+					<ul>
+						<g:each var="hora" in="${horas[5]}">
+
+							<li>
+								${hora}
+							</li>
+
+						</g:each>
+					</ul></td>
+				<td style="width: 140px; text-align: center;"><strong>Domingo</strong>
+					<ul>
+						<g:each var="hora" in="${horas[6]}">
+
+							<li>
+								${hora}
+							</li>
+
+						</g:each>
+					</ul></td>
+			</tr>
+		</table>
+		
+		<div class="cara"></div>
+		<hr class="cleanit">
+		
+		<div id="divBusqueda" style="display: block">
+			<div class="mapit" id="mapa" style="width: 938px; height: 360px"></div>
+		</div>
+		
+		<div class="cara"></div>
+		<hr class="cleanit">
 
 		<input type="button" class="button_submit" value="VOLVER"
 			onclick="history.back()">
 
-		<div class="cara"></div>
-
-		<%--		<h3>Contact information</h3>--%>
-		<%--		<div class="contactinfo">--%>
-		<%--			<span class="ico_mapmark"><b>15th Avenue, 15 362, San--%>
-		<%--					Francisco</b></span>--%>
-		<%--		</div>--%>
-		<%--		<div class="contactinfo">--%>
-		<%--			<span class="ico_message"><b>email@domain.com</b></span>--%>
-		<%--		</div>--%>
-		<%--		<div class="contactinfo">--%>
-		<%--			<span class="ico_iphone"><b>(+123) 456 789 012</b></span>--%>
-		<%--		</div>--%>
-		<hr class="cleanit">
 	</div>
 	<hr class="cleanit">
 	<div id="footer">

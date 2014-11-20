@@ -34,9 +34,9 @@ pop = pop.replace(/&(lt|gt|quot);/g, function (m, p) { //Se reemplazan los "&quo
 });
  
 var populations = JSON.parse(pop);
-for(var i in populations){
-	document.write(populations[i].namePCenter);
-}
+//for(var i in populations){
+//	document.write(populations[i].namePCenter);
+//}
 
 
 
@@ -231,13 +231,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		</div>
 
 		<div id="divBusqueda" style="display: block">
-			<div class="mapit" id="mapa" style="width: 938px; height: 360px">
-				<%--			<iframe width="938" height="360" frameborder="0" scrolling="no"--%>
-				<%--				marginheight="0" marginwidth="0"--%>
-				<%--				src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=San+Francisco,+CA,+United+States&amp;aq=0&amp;oq=san+f&amp;sll=37.0625,-95.677068&amp;sspn=45.553578,93.076172&amp;ie=UTF8&amp;hq=&amp;ll=37.77493,-122.419416&amp;z=14&amp;output=embed">--%>
-				<%--			</iframe>--%>
-			</div>
-
+			<div class="mapit" id="mapa" style="width: 938px; height: 360px"></div>
 		</div>
 		
 		
@@ -252,15 +246,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 								onmouseover="mouseSobreRuta(this)"
 								onmouseleave="mouseNoSobreRuta(this)">
 								<g:link class="rutas" action="detalleRuta" id="${route.id}">
-<%--								<a class="rutas" href="/UNViajante/route/detalleRuta?idRuta=${route.id}">--%>
-<%--								<a class="rutas">--%>
-<%--								<form  method="post" class="formit"--%>
-<%--									action="/UNViajante/route/consulta">--%>
 									<table>
 										<tr>
-											<td style="width: 460px"><strong>Nombre: </strong> ${route.originCity}
+											<td style="width: 460px"><strong>Origen-Destino: </strong> ${route.originCity}
 												- ${route.destinyCity}</td>
-											<td><strong>Precio: </strong> $${route.valorAproxViaje}</td>
+											<td><strong>Precio: </strong> $ ${route.valorAproxViaje} pesos</td>
 										</tr>
 										<tr>
 											<td><strong>Tiempo de Viaje: </strong> ${route.duracionViaje}
@@ -268,9 +258,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 											<td><strong>Empresa: </strong> ${route.company.nameCompany}</td>
 										</tr>
 									</table>
-<%--							    </form>--%>
-</g:link>
-<%--								</a>--%>
+								</g:link>
 							</div>
 
 						</g:each>
