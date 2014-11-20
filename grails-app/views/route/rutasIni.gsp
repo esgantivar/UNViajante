@@ -19,60 +19,63 @@
 		var myCenter=new google.maps.LatLng(4.6546188,-74.1152346);
 		var num = 0;
 		var markers = [];
+		var directionsService = new google.maps.DirectionsService();
+    	var directionsDisplay = new google.maps.DirectionsRenderer();
 		
 				
-		function initialize()
-		{
-		var mapProp = {
-		  center:myCenter,
-		  zoom:5,
-		  mapTypeId:google.maps.MapTypeId.ROADMAP
-		  };
-		
-		  map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-		
-		  google.maps.event.addListener(map, 'click', function(event) {
-		    placeMarker(event.latLng);
-		  });
+		function initialize(){
+			var mapProp = {
+			  center:myCenter,
+			  zoom:5,
+			  mapTypeId:google.maps.MapTypeId.ROADMAP
+			  };
+			
+			  map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			
+			  google.maps.event.addListener(map, 'click', function(event) {
+			    placeMarker(event.latLng);
+			  });
+				directionsDisplay.setMap(map);
+				//quitar los markers de A y B:
+				directionsDisplay.setOptions( { suppressMarkers: true } );
 		}
 		
 		function placeMarker(location) {	
 			map.setCenter(location);
-		  	var marker = new google.maps.Marker({
-		    position: location,
-		    map: map,
-		  });
-  		markers.push(marker);
+			var marker = new google.maps.Marker({
+				position: location,
+				map: map,
+			});
+  			markers.push(marker);
+  			/*var infowindow = new google.maps.InfoWindow({
+				content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+			});*/
+			
+		  	//infowindow.open(map,marker);
 		  
-		  
-		  
-		  var infowindow = new google.maps.InfoWindow({
-		    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
-		  });
-		  //infowindow.open(map,marker);
-		  
-		  var origen = new google.maps.InfoWindow({
-		  	content:'Origen'
-		  });
-		  
-		  var destino = new google.maps.InfoWindow({
-		  	content:'Destino'
-		  });
-		  
-		  if(num==0){
-		  	origen.open(map,marker);
-		  	num++;
-		  }
-		  else if(num==1){
-		  	destino.open(map,marker);
-		  	num++;
-		  }
-		  else if(num>1){
-		  	//borrar markers
-		  	deleteMarkers();
-		  	num=0;
-		  }
-		}
+			  var origen = new google.maps.InfoWindow({
+			  	content:'Origen'
+			  });
+			  
+			  var destino = new google.maps.InfoWindow({
+			  	content:'Destino'
+			  });
+			  
+			  if(num==0){
+			  	origen.open(map,marker);
+			  	num++;
+			  }
+			  else if(num==1){
+			  	destino.open(map,marker);
+			  	num++;
+			  	calcRoute();
+			  }
+			  else if(num>1){
+			  	//borrar markers
+			  	deleteMarkers();
+			  	num=0;
+			  }
+			}
 		
 		// Sets the map on all markers in the array.
 		function setAllMap(map) {
@@ -92,6 +95,20 @@
 		  markers = [];
 		}
 		
+		//funcion para calcular una ruta
+		function calcRoute(){
+			var request = {
+				origin: new google.maps.LatLng(markers[0].position.lat(), markers[0].position.lng()),
+				destination: new google.maps.LatLng(markers[1].position.lat(), markers[1].position.lng()),
+				travelMode: google.maps.DirectionsTravelMode.DRIVING
+				//travelMode: google.maps.TravelMode[DRIVING]
+			};
+			directionsService.route(request, function(response, status) {
+				if (status == google.maps.DirectionsStatus.OK){
+					directionsDisplay.setDirections(response);
+				}
+			});
+		}
 		
 		google.maps.event.addDomListener(window, 'load', initialize);
 		
