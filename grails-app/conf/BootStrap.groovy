@@ -152,21 +152,22 @@ class BootStrap {
 		def departureTimes =  ["modified": true, "lun":[], "mar":[], "mie":[], "jue":[], "vie":[], "sab":[], "dom":[]]
         def days = [0:"lun", 1:"mar", 2:"mie", 3:"jue", 4:"vie", 5:"sab", 6:"dom"]
         def hours = [0:"5:00",1:"5:30",2:"6:00",3:"6:30",4:"7:00",5:"7:30",6:"8:00",7:"8:30",8:"9:00",9:"9:30",10:"10:00",11:"10:30",12:"11:00",13:"11:30",14:"12:00",15:"12:30",
-        14:"13:00",14:"13:30",16:"14:00",17:"14:30",18:"15:00",19:"15:30",20:"16:00",21:"16:30",22:"17:00",23:"17:30",24:"18:00",25:"18:30",26:"19:00",27:"19:30",28:"20:00",29:"20:30"]
+        16:"13:00",17:"13:30",18:"14:00",19:"14:30",20:"15:00",21:"15:30",22:"16:00",23:"16:30",24:"17:00",25:"17:30",26:"18:00",27:"18:30",28:"19:00",29:"19:30",30:"20:00",31:"20:30"]
         def day = [] as Set
         def hour = [] as Set
         def Random r = new Random()
         
-        while(day.size()<=3){
-            day += r.nextInt(7 ** 1)
+        while(day.size() <= r.nextInt(2)+5){
+            day += r.nextInt(days.size() ** 1)
         }
         for (d in day){
-            while(hour.size()<=10){
-            hour += r.nextInt(29 ** 1)
+            while(hour.size() <= r.nextInt(25)+6){
+            hour += r.nextInt(hours.size() ** 1)
             }
             for (h in hour.sort()){
              departureTimes[days[d]] += hours[h]
             }
+			hour.clear()
         }
 		return departureTimes
 	}
