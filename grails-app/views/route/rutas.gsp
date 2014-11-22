@@ -38,13 +38,48 @@ var populations = JSON.parse(pop);
 //}
 
 function initialize() {
+	var centers = new Array(populations.length);
+	var markers = new Array(populations.length);
+	var infos = new Array(populations.length);
+	
 	var mapOptions = {
-	  zoom: 10,
+	  zoom: 7,
 	  center: new google.maps.LatLng(4.608630556, -74.07670556),
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	
-	map = new google.maps.Map(document.getElementById('mapa'), mapOptions);
+	var map = new google.maps.Map(document.getElementById('mapa'),
+	    mapOptions);
+
+	//Creacion de los puntos para los centros poblados
+	for(var i in populations){
+		centers[i] = new google.maps.LatLng(populations[i].latitude, populations[i].longitude);
+	}
+
+	//Creacion de los marcadores
+	for(var j in centers){
+		markers[j] = new google.maps.Marker({
+			  position:centers[j],
+		  });
+	}
+
+	//Creacion de las infowindow
+	for (var k in infos){
+		infos[k] = new google.maps.InfoWindow({
+			  content:"Hello World!",
+		  });
+	}
+
+	//Setting de los marcadores a los mapas
+    for (var k in markers){
+    	markers[k].setMap(map);
+        }
+
+    //Asignar los infos al mapa
+    for (var j in infos){
+    	google.maps.event.addListener(markers[j], 'click', function() {
+  		  infos[k].open(map,markers[j]);
+  		  });
+        }
 	    
 	////////////////////////////
 	google.maps.event.addListener(map, 'click', function(event) {
