@@ -3,23 +3,17 @@
 <%@page import="grails.converters.JSON"%>
 <html>
 <head>
+<meta name="layout" content="main2"/>
 <title>Rutas</title>
-<meta charset="utf-8">
-<script
-	src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
+<%--<meta charset="utf-8">--%>
+<script src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
 
-<script src="${resource(dir: 'js', file: 'jquery.tools.min.js')}"></script>
+<%--<script src="${resource(dir: 'js', file: 'jquery.tools.min.js')}"></script>--%>
 <script src="${resource(dir: 'js', file: 'smartpaginator.js')}"></script>
-<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"
-	type="text/css">
-<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}"
-	type="text/css">
-<link rel="stylesheet"
-	href="${resource(dir: 'css', file: 'smartpaginator.css')}"
-	type="text/css">
-<link
-	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext'
-	rel='stylesheet' type='text/css'>
+<%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"type="text/css">--%>
+<%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}" type="text/css">--%>
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'smartpaginator.css')}" type="text/css">
+<%--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>--%>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script>
@@ -140,22 +134,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </head>
 
 <body onload="finCarga()">
-	<div id="header">
-		<div id="header_in">
-			<h1>
-				<a href="/UNViajante/inicio/inicio.gsp"><asset:image
-						src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"
-						height="70px" /></a>
-			</h1>
-			<div id="menu">
-				<ul>
-					<li><a href="/UNViajante/inicio/inicio.gsp">Inicio</a></li>
-					<li><a href="/UNViajante/route" class="active">Rutas</a></li>
-					<li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<%--	<div id="header">--%>
+<%--		<div id="header_in">--%>
+<%--			<h1>--%>
+<%--				<a href="/UNViajante/inicio/inicio.gsp"><asset:image--%>
+<%--						src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"--%>
+<%--						height="70px" /></a>--%>
+<%--			</h1>--%>
+<%--			<div id="menu">--%>
+<%--				<ul>--%>
+<%--					<li><a href="/UNViajante/inicio/inicio.gsp">Inicio</a></li>--%>
+<%--					<li><a href="/UNViajante/route" class="active">Rutas</a></li>--%>
+<%--					<li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>--%>
+<%--				</ul>--%>
+<%--			</div>--%>
+<%--		</div>--%>
+<%--	</div>--%>
 	<div id="main_part_inner">
 		<div id="main_part_inner_in">
 			<h2>Rutas Intermunicipales</h2>
@@ -286,15 +280,15 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 	</div>
 	<hr class="cleanit">
-	<div id="footer">
-		<div id="footer_in">
-			<p>
-				Copyright &copy; 2045 <a href="#">Site Name</a>. All Rights Reserved
-			</p>
-			<span>Design By: <a href="http://ries.cz">Vil&eacute;m
-					Ries</a></span>
-		</div>
-	</div>
+<%--	<div id="footer">--%>
+<%--		<div id="footer_in">--%>
+<%--			<p>--%>
+<%--				Copyright &copy; 2045 <a href="#">Site Name</a>. All Rights Reserved--%>
+<%--			</p>--%>
+<%--			<span>Design By: <a href="http://ries.cz">Vil&eacute;m--%>
+<%--					Ries</a></span>--%>
+<%--		</div>--%>
+<%--	</div>--%>
 	<script>
 		$(function() {
 			$("ul.controls").tabs("div.testimonials > div");
