@@ -3,20 +3,23 @@
 <%@page import="grails.converters.JSON"%>
 <html>
 <head>
-<meta name="layout" content="main2" />
 <title>Rutas</title>
-<%--<meta charset="utf-8">--%>
+<meta charset="utf-8">
 <script
 	src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
 
-<%--<script src="${resource(dir: 'js', file: 'jquery.tools.min.js')}"></script>--%>
+<script src="${resource(dir: 'js', file: 'jquery.tools.min.js')}"></script>
 <script src="${resource(dir: 'js', file: 'smartpaginator.js')}"></script>
-<%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"type="text/css">--%>
-<%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}" type="text/css">--%>
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"
+	type="text/css">
+<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}"
+	type="text/css">
 <link rel="stylesheet"
 	href="${resource(dir: 'css', file: 'smartpaginator.css')}"
 	type="text/css">
-<%--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>--%>
+<link
+	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext'
+	rel='stylesheet' type='text/css'>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script>
@@ -36,16 +39,16 @@ pop = pop.replace(/&(lt|gt|quot);/g, function (m, p) { //Se reemplazan los "&quo
     return (p == "lt")? "<" : (p == "gt") ? ">" : '"';
 });
  
-var populations = JSON.parse(pop);
-var centers = new Array(populations.length);
+var populationsJSON = JSON.parse(pop);
+var centers = new Array(populationsJSON.length);
 //for(var i in populations){
 //	document.write(populations[i].namePCenter);
 //}
 
 function initialize() {
-	var markers = new Array(populations.length);
-	var infos = new Array(populations.length);
-	var names = new Array(populations.length);
+	var markers = new Array(populationsJSON.length);
+	var infos = new Array(populationsJSON.length);
+	var names = new Array(populationsJSON.length);
 	
 	
 	var mapOptions = {
@@ -57,9 +60,9 @@ function initialize() {
 	    mapOptions);
 
 	//Creacion de los puntos para los centros poblados
-	for(var i in populations){
-		centers[i] = new google.maps.LatLng(populations[i].latitude, populations[i].longitude);
-		names[i] = populations[i].namePCenter;
+	for(var i in populationsJSON){
+		centers[i] = new google.maps.LatLng(populationsJSON[i].latitude, populationsJSON[i].longitude);
+		names[i] = populationsJSON[i].namePCenter;
 	}
 
 	//Creacion de los marcadores
@@ -143,7 +146,7 @@ function nearestMarker(location){
 	for(var i=0; i<centers.length; i++){
 		if(getDistance(location, centers[i]) < distances){
 			distances = getDistance(location, centers[i]);
-			centerName = populations[i].namePCenter;
+			centerName = populationsJSON[i].namePCenter;
 			point = centers[i];
 		}
 	}
@@ -269,22 +272,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </head>
 
 <body onload="finCarga()">
-	<%--	<div id="header">--%>
-	<%--		<div id="header_in">--%>
-	<%--			<h1>--%>
-	<%--				<a href="/UNViajante/inicio/inicio.gsp"><asset:image--%>
-	<%--						src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"--%>
-	<%--						height="70px" /></a>--%>
-	<%--			</h1>--%>
-	<%--			<div id="menu">--%>
-	<%--				<ul>--%>
-	<%--					<li><a href="/UNViajante/inicio/inicio.gsp">Inicio</a></li>--%>
-	<%--					<li><a href="/UNViajante/route" class="active">Rutas</a></li>--%>
-	<%--					<li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>--%>
-	<%--				</ul>--%>
-	<%--			</div>--%>
-	<%--		</div>--%>
-	<%--	</div>--%>
+	<div id="header">
+		<div id="header_in">
+			<h1>
+				<a href="/UNViajante/inicio/inicio.gsp"><asset:image
+						src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"
+						height="70px" /></a>
+			</h1>
+			<div id="menu">
+				<ul>
+					<li><a href="/UNViajante/inicio/inicio.gsp">Inicio</a></li>
+					<li><a href="/UNViajante/route" class="active">Rutas</a></li>
+					<li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div id="main_part_inner">
 		<div id="main_part_inner_in">
 			<h2>Rutas Intermunicipales</h2>
@@ -292,9 +295,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	</div>
 	<div id="content_inner">
 		<div id="divPestañasBusqueda">
-			<input type="button" class="button" value="BUSQUEDA"
-				onclick="verBusqueda()"> <input type="button" class="button"
-				value="BUSQUEDA AVANZADA" onclick="verBusquedaAvanzada()">
+			<input type="button" class="button" value="BUSQUEDA" onclick="verBusqueda()"> 
+			<input type="button" class="button" value="BUSQUEDA AVANZADA" onclick="verBusquedaAvanzada()">
 		</div>
 		<div id="divBusquedaAvanzada" style="display: none">
 			<h3>Busca tu Ruta</h3>
@@ -356,51 +358,49 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				</div>
 				<input type="submit" class="button_submit" value="BUSCAR">
 			</form>
-
+			
 
 		</div>
 
 		<div id="divBusqueda" style="display: block">
-		<h3>Busca tu Ruta</h3>
 			<div class="mapit" id="mapa" style="width: 938px; height: 360px"></div>
 		</div>
-
-
+		
+		
 		<div id="divResultados" style="display: none;">
-			<g:if test="${routes?.size() > 0}">
-				<h3>Resultados</h3>
-				<div id="listaResultados">
-					<g:each var="route" in="${routes}">
+				<g:if test="${routes?.size() > 0}">
+					<h3>Resultados</h3>
+					<div id="listaResultados">
+						<g:each var="route" in="${routes}">
 
-						<div
-							style="padding: 20px; background-color: #F9F9F9; border-bottom: 1px solid #000000; font-size: 20px; cursor: pointer;"
-							onmouseover="mouseSobreRuta(this)"
-							onmouseleave="mouseNoSobreRuta(this)">
-							<g:link class="rutas" action="detalleRuta" id="${route.id}">
-								<table>
-									<tr>
-										<td style="width: 460px"><strong>Origen-Destino:
-										</strong> ${route.originCity} - ${route.destinyCity}</td>
-										<td><strong>Precio: </strong> $ ${route.valorAproxViaje}
-											pesos</td>
-									</tr>
-									<tr>
-										<td><strong>Tiempo de Viaje: </strong> ${route.duracionViaje}
-											horas</td>
-										<td><strong>Empresa: </strong> ${route.company.nameCompany}</td>
-									</tr>
-								</table>
-							</g:link>
-						</div>
+							<div
+								style="padding: 20px; background-color: #F9F9F9; border-bottom: 1px solid #000000; font-size: 20px; cursor: pointer;"
+								onmouseover="mouseSobreRuta(this)"
+								onmouseleave="mouseNoSobreRuta(this)">
+								<g:link class="rutas" action="detalleRuta" id="${route.id}">
+									<table>
+										<tr>
+											<td style="width: 460px"><strong>Origen-Destino: </strong> ${route.originCity}
+												- ${route.destinyCity}</td>
+											<td><strong>Precio: </strong> $ ${route.valorAproxViaje} pesos</td>
+										</tr>
+										<tr>
+											<td><strong>Tiempo de Viaje: </strong> ${route.duracionViaje}
+												horas</td>
+											<td><strong>Empresa: </strong> ${route.company.nameCompany}</td>
+										</tr>
+									</table>
+								</g:link>
+							</div>
 
-					</g:each>
-				</div>
-				<div id="black" style="margin: auto;"></div>
-			</g:if>
-			<g:if test="${routes?.size() <= 0}">
-				<h3>No hay resultados para esta busqueda</h3>
-			</g:if>
-		</div>
+						</g:each>
+					</div>
+					<div id="black" style="margin: auto;"></div>
+				</g:if>
+				<g:if test="${routes?.size() <= 0}">
+					<h3>No hay resultados para esta busqueda</h3>
+				</g:if>
+			</div>
 
 		<div class="cara"></div>
 		<%--		<h3>Contact information</h3>--%>
@@ -418,15 +418,15 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 	</div>
 	<hr class="cleanit">
-	<%--	<div id="footer">--%>
-	<%--		<div id="footer_in">--%>
-	<%--			<p>--%>
-	<%--				Copyright &copy; 2045 <a href="#">Site Name</a>. All Rights Reserved--%>
-	<%--			</p>--%>
-	<%--			<span>Design By: <a href="http://ries.cz">Vil&eacute;m--%>
-	<%--					Ries</a></span>--%>
-	<%--		</div>--%>
-	<%--	</div>--%>
+	<div id="footer">
+		<div id="footer_in">
+			<p>
+				Copyright &copy; 2045 <a href="#">Site Name</a>. All Rights Reserved
+			</p>
+			<span>Design By: <a href="http://ries.cz">Vil&eacute;m
+					Ries</a></span>
+		</div>
+	</div>
 	<script>
 		$(function() {
 			$("ul.controls").tabs("div.testimonials > div");
