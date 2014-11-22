@@ -17,19 +17,19 @@
 	type="text/css">
 <g:layoutHead />
 </head>
-<body>
+<body onload="${raw(controllerName == 'route' ? 'finCarga()' : '')}">
 
 	<div id="header">
 		<div id="header_in">
 			<h1>
-				<a href="inicio.gsp"><asset:image src="UNViajante.PNG"
+				<a href="/UNViajante/inicio"><asset:image src="UNViajante.PNG"
 						alt="Generic placeholder imag" width="155px" height="70px" /></a>
 			</h1>
 
 			<div id="menu">
 				<ul>
-					<li><a href="inicio.gsp" ${raw((controllerName == 'inicio' && actionName == 'inicio')||controllerName == null ? 'class="active"' : '')}> Inicio</a></li>
-					<li><a href="/UNViajante/route" ${raw(controllerName == 'route' && actionName == 'index' ? 'class="active"' : '')}>Rutas</a></li>
+					<li><a href="/UNViajante/inicio" ${raw((controllerName == 'inicio' && actionName == 'inicio')||controllerName == null ? 'class="active"' : '')}> Inicio</a></li>
+					<li><a href="/UNViajante/route" ${raw(controllerName == 'route' ? 'class="active"' : '')}>Rutas</a></li>
 					<li><a href="/UNViajante/inicio/comentarios" ${raw(controllerName == 'inicio' && actionName == 'comentarios' ? 'class="active"' : '')}>Comentarios</a></li>
 					<li><a href="/UNViajante/inicio/nosotros" ${raw(controllerName == 'inicio' && actionName == 'nosotros' ? 'class="active"' : '')}>Nosotros</a></li>
 				</ul>
