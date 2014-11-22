@@ -27,6 +27,7 @@
 	var markersRuta = [];
 	var directionsService = new google.maps.DirectionsService();
 	var directionsDisplay = new google.maps.DirectionsRenderer();
+	
 ////////////////////////////
 
 var pop = '${populations as JSON}';
@@ -36,12 +37,12 @@ pop = pop.replace(/&(lt|gt|quot);/g, function (m, p) { //Se reemplazan los "&quo
 });
  
 var populations = JSON.parse(pop);
+var centers = new Array(populations.length);
 //for(var i in populations){
 //	document.write(populations[i].namePCenter);
 //}
 
 function initialize() {
-	var centers = new Array(populations.length);
 	var markers = new Array(populations.length);
 	var infos = new Array(populations.length);
 	var names = new Array(populations.length);
@@ -79,7 +80,8 @@ function initialize() {
 	//Setting de los marcadores a los mapas
     for (var k in markers){
     	markers[k].setMap(map);
-        }
+
+    }
 
     
 	    
@@ -98,8 +100,10 @@ function initialize() {
 
 function placeMarker(location) {	
 	map.setCenter(location); 
+	var nMarker = nearestMarker(location);
+	
 	var marker = new google.maps.Marker({
-		position: location,
+		position: nMarker[1],
 		map: map,
 	});
 	markersRuta.push(marker);
@@ -130,6 +134,37 @@ function placeMarker(location) {
 	  }
 }
 
+
+function nearestMarker(location){
+	var distances = Number.POSITIVE_INFINITY;
+	var centerName = "";
+	var point;
+	
+	for(var i=0; i<centers.length; i++){
+		if(getDistance(location, centers[i]) < distances){
+			distances = getDistance(location, centers[i]);
+			centerName = populations[i].namePCenter;
+			point = centers[i];
+		}
+	}
+	return [centerName, point];
+}
+
+var rad = function(x) {
+	  return x * Math.PI / 180;
+	};
+
+var getDistance = function(p1, p2) {
+  	var R = 6378137; // Earth’s mean radius in meter
+  	var dLat = rad(p2.lat() - p1.lat());
+  	var dLong = rad(p2.lng() - p1.lng());
+  	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    	Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+    	Math.sin(dLong / 2) * Math.sin(dLong / 2);
+  	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  	var d = R * c;
+  	return d; // returns the distance in meter
+};
 // Sets the map on all markers in the array.
 function setAllMap(map) {
   for (var i = 0; i < markersRuta.length; i++) {
@@ -326,6 +361,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		</div>
 
 		<div id="divBusqueda" style="display: block">
+		<h3>Busca tu Ruta</h3>
 			<div class="mapit" id="mapa" style="width: 938px; height: 360px"></div>
 		</div>
 
