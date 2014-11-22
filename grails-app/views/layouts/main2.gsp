@@ -9,17 +9,12 @@
 <meta charset="utf-8">
 <head>
 <title><g:layoutTitle default="UNViajante" /></title>
-<%--		<asset:stylesheet src="application.css"/>--%>
-<%--		<asset:javascript src="application.js"/>--%>
-<%--		<asset:stylesheet src="reset.css"/>--%>
-<%--		<asset:javascript src="styl.js"/>--%>
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"
 	type="text/css">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}"
 	type="text/css">
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'fonts.css')}"
 	type="text/css">
-<%--		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>--%>
 <g:layoutHead />
 </head>
 <body>
@@ -33,9 +28,7 @@
 
 			<div id="menu">
 				<ul>
-<%--					<li><a href="inicio.gsp" class="active"> Inicio</a></li>--%>
-<%--					<li>${actionName}</li>--%>
-					<li><a href="inicio.gsp" ${raw(controllerName == 'inicio' && actionName == 'inicio' ? 'class="active"' : '')}> Inicio</a></li>
+					<li><a href="inicio.gsp" ${raw((controllerName == 'inicio' && actionName == 'inicio')||controllerName == null ? 'class="active"' : '')}> Inicio</a></li>
 					<li><a href="/UNViajante/route" ${raw(controllerName == 'route' && actionName == 'index' ? 'class="active"' : '')}>Rutas</a></li>
 					<li><a href="/UNViajante/inicio/comentarios" ${raw(controllerName == 'inicio' && actionName == 'comentarios' ? 'class="active"' : '')}>Comentarios</a></li>
 					<li><a href="/UNViajante/inicio/nosotros" ${raw(controllerName == 'inicio' && actionName == 'nosotros' ? 'class="active"' : '')}>Nosotros</a></li>
@@ -45,8 +38,6 @@
 	</div>
 
 	<g:layoutBody />
-	<%--		<div class="footer" role="contentinfo"><p></p></div>--%>
-	<%--		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>--%>
 	<div id="footer">
 		<div id="footer_in">
 			<p>
