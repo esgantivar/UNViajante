@@ -7,9 +7,9 @@ import DataBaseModel.GeographicLine
 import groovy.sql.Sql
 
 class BootStrap {
-	
+
 	def init = { servletContext ->
-		
+
 		//Departamentos
 		new Department(idDepartment: "91", name: "Amazonas").save()
 		new Department(idDepartment: "05", name: "Antioquia").save()
@@ -45,46 +45,45 @@ class BootStrap {
 		new Department(idDepartment: "97", name: "Vaupes").save()
 		new Department(idDepartment: "99", name: "Vichada").save()
 
-		
+
 		//Ciudades
-		
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "91001", namePCenter: "Leticia"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "05001", namePCenter: "Medellin", latitude: 6.27907, longitude: -75.57113 ))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "05002", namePCenter: "Abejorral"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "05088", namePCenter: "Bello"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "81001", namePCenter: "Arauca"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "08001", namePCenter: "Barranquilla"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "11001", namePCenter: "Bogota", latitude: 4.654052 , longitude: -74.11524))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "13001", namePCenter: "Cartagena"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "15001", namePCenter: "Tunja"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "17001", namePCenter: "Manizales"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "18001", namePCenter: "Florencia"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "85001", namePCenter: "Yopal"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "19001", namePCenter: "Popayan"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "20001", namePCenter: "Valledupar"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "27001", namePCenter: "Quibdo"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "23001", namePCenter: "Monteria"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "25001", namePCenter: "Agua de Dios"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "94001", namePCenter: "Inirida"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "95001", namePCenter: "San Jose del Guaviare"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "41001", namePCenter: "Neiva"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "44001", namePCenter: "Rioacha"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "47001", namePCenter: "Santa Marta"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "50001", namePCenter: "Villavicencio"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "52001", namePCenter: "Pasto"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "54001", namePCenter: "Cucuta"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "86001", namePCenter: "Mocoa"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "63001", namePCenter: "Armenia"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "66001", namePCenter: "Pereira"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "88001", namePCenter: "San Andres"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "68001", namePCenter: "Bucaramanga"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "70001", namePCenter: "Sincelejo"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "73001", namePCenter: "Ibague"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "76001", namePCenter: "Cali"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "97001", namePCenter: "Mitu"))
-		agregarPoblacion(new PopulationCenter (idPopulationCenter: "99001", namePCenter: "Puerto Carreno"))
-	
-		
+
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "05001", namePCenter: "Medellin", latitude: 6.24897, longitude: -75.575742 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "05002", namePCenter: "Abejorral", latitude: 5.789246, longitude: -75.428819 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "05088", namePCenter: "Bello", latitude: 6.332887, longitude: -75.552466 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "81001", namePCenter: "Arauca", latitude: 7.079984, longitude: -70.756142 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "08001", namePCenter: "Barranquilla", latitude: 10.977857, longitude: -74.804808 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "11001", namePCenter: "Bogota", latitude: 4.646032, longitude: -74.10582 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "13001", namePCenter: "Cartagena", latitude: 10.399892, longitude: -75.502992 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "15001", namePCenter: "Tunja", latitude: 5.542139, longitude: -73.356045 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "17001", namePCenter: "Manizales", latitude: 5.060199, longitude: -75.49115 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "18001", namePCenter: "Florencia", latitude: 1.616346, longitude: -75.607511 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "85001", namePCenter: "Yopal", latitude: 5.333376, longitude: -72.394998 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "19001", namePCenter: "Popayan", latitude: 2.457516, longitude: -76.597933 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "20001", namePCenter: "Valledupar", latitude: 10.466346, longitude: -73.255179 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "27001", namePCenter: "Quibdo", latitude: 5.688892, longitude: -76.653676 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "23001", namePCenter: "Monteria", latitude: 8.756296, longitude: -75.878996 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "25001", namePCenter: "Agua de Dios", latitude: 4.376668, longitude: -74.668457 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "94001", namePCenter: "Inirida", latitude: 3.867969, longitude: -67.923854 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "95001", namePCenter: "San Jose del Guaviare", latitude: 2.568341, longitude: -72.638945 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "41001", namePCenter: "Neiva", latitude: 2.935465, longitude: -75.277781 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "44001", namePCenter: "Rioacha", latitude: 11.538218, longitude: -72.910328 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "47001", namePCenter: "Santa Marta", latitude: 11.23653, longitude: -74.190383 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "50001", namePCenter: "Villavicencio", latitude: 4.131707, longitude: -73.62098 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "52001", namePCenter: "Pasto", latitude: 1.211149, longitude: -77.278048 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "54001", namePCenter: "Cucuta", latitude: 7.903995, longitude: -72.504683 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "86001", namePCenter: "Mocoa", latitude: 1.150363, longitude: -76.64994 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "63001", namePCenter: "Armenia", latitude: 4.53486, longitude: -75.683266 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "66001", namePCenter: "Pereira", latitude: 4.807241, longitude: -75.716771 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "88001", namePCenter: "San Andres", latitude: 12.580084, longitude: -81.706913 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "68001", namePCenter: "Bucaramanga", latitude: 7.115287, longitude: -73.132416 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "70001", namePCenter: "Sincelejo", latitude: 9.298266, longitude: -75.396674 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "73001", namePCenter: "Ibague", latitude: 4.427993, longitude: -75.187788 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "76001", namePCenter: "Cali", latitude: 3.418443, longitude: -76.52446 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "97001", namePCenter: "Mitu", latitude: 1.254099, longitude: -70.233609 ))
+		agregarPoblacion(new PopulationCenter (idPopulationCenter: "99001", namePCenter: "Puerto Carreno", latitude: 6.183934, longitude: -67.488234 ))
+
+
 		//Empresas de transporte
 		agregarCompañia(new Company(nameCompany: "Rapido Tolima", telephoneNumber: "8 2654321", address: "Cra 5ta # 38-56"), "Ibague")
 		agregarCompañia(new Company(nameCompany: "Flota La Magdalena", telephoneNumber: "4 2309452", address: "Carrera 64A # 78-580"), "Medellin")
@@ -95,8 +94,8 @@ class BootStrap {
 		agregarCompañia(new Company(nameCompany: "Expreso Bolivariano", telephoneNumber: "1 4249090", address: "Diagonal 33B No. 69 A 10"), "Bogota")
 		agregarCompañia(new Company(nameCompany: "Copetran", telephoneNumber: "7 6448167", address: "Calle 55 No. 17B-17"), "Bucaramanga")
 		agregarCompañia(new Company(nameCompany: "Berlinas del Fonce", telephoneNumber: "5 3230033", address: "Km 1.5 prolongación Av. Murillo"), "Barranquilla")
-		
-		
+
+
 		//Rutas
 		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Medellin", duracionViaje: 9, valorAproxViaje: 35000), "Rapido Tolima", null)
 		agregarRuta(new Route(originCity: "Bogota", destinyCity: "Medellin", duracionViaje: 10, valorAproxViaje: 55000), "Flota La Magdalena", null)
@@ -115,28 +114,28 @@ class BootStrap {
 		agregarRuta(new Route(originCity: "Medellin", destinyCity: "Cartagena", duracionViaje: 13, valorAproxViaje: 105000), "Expreso Brasilia", null)
 		agregarRuta(new Route(originCity: "Cartagena", destinyCity: "Bogota", duracionViaje: 8.5, valorAproxViaje: 110000), "Expreso Brasilia", null)
 		agregarRuta(new Route(originCity: "Cartagena", destinyCity: "Medellin", duracionViaje: 13, valorAproxViaje: 105000), "Expreso Brasilia", null)
-		
-		
+
+
 		def s = "from Route as r where r.destinyCity =:destiny and r.valorAproxViaje between 30000 and 50000"
 		def routeList = Route.findAll(s,[destiny:'Medellin'])
-		
+
 		print routeList[0].departureTimes
 	}
-	
+
 	//Las poblaciones correspondientes a un departamento son agregadas al mismo
 	def agregarPoblacion(poblacion){
 		def idPoblacion = poblacion.idPopulationCenter.substring(0,2)
 		def dep = Department.findByIdDepartment(idPoblacion)
 		dep.addToCenters(poblacion).save(flush:true) //Se añaden las ciudades respectivas
 	}
-	
+
 	def agregarCompañia(company, poblacion){
 		def pob = PopulationCenter.findByNamePCenter(poblacion)
 		pob.addToCompanies(company).save(flush:true)
 	}
-	
+
 	def agregarRuta(ruta, company, travel){
-		ruta.departureTimes = agregarHorarios() 
+		ruta.departureTimes = agregarHorarios()
 		ruta.save(flush:true)
 		if(company != null){
 			def comp = Company.findByNameCompany(company)
@@ -147,32 +146,32 @@ class BootStrap {
 			gLine.route = ruta
 		}
 	}
-	
+
 	def agregarHorarios(){
 		def departureTimes =  ["modified": true, "lun":[], "mar":[], "mie":[], "jue":[], "vie":[], "sab":[], "dom":[]]
-        def days = [0:"lun", 1:"mar", 2:"mie", 3:"jue", 4:"vie", 5:"sab", 6:"dom"]
-        def hours = [0:"5:00",1:"5:30",2:"6:00",3:"6:30",4:"7:00",5:"7:30",6:"8:00",7:"8:30",8:"9:00",9:"9:30",10:"10:00",11:"10:30",12:"11:00",13:"11:30",14:"12:00",15:"12:30",
-        16:"13:00",17:"13:30",18:"14:00",19:"14:30",20:"15:00",21:"15:30",22:"16:00",23:"16:30",24:"17:00",25:"17:30",26:"18:00",27:"18:30",28:"19:00",29:"19:30",30:"20:00",31:"20:30"]
-        def day = [] as Set
-        def hour = [] as Set
-        def Random r = new Random()
-        
-        while(day.size() <= r.nextInt(2)+5){
-            day += r.nextInt(days.size() ** 1)
-        }
-        for (d in day){
-            while(hour.size() <= r.nextInt(25)+6){
-            hour += r.nextInt(hours.size() ** 1)
-            }
-            for (h in hour.sort()){
-             departureTimes[days[d]] += hours[h]
-            }
+		def days = [0:"lun", 1:"mar", 2:"mie", 3:"jue", 4:"vie", 5:"sab", 6:"dom"]
+		def hours = [0:"5:00",1:"5:30",2:"6:00",3:"6:30",4:"7:00",5:"7:30",6:"8:00",7:"8:30",8:"9:00",9:"9:30",10:"10:00",11:"10:30",12:"11:00",13:"11:30",14:"12:00",15:"12:30",
+			16:"13:00",17:"13:30",18:"14:00",19:"14:30",20:"15:00",21:"15:30",22:"16:00",23:"16:30",24:"17:00",25:"17:30",26:"18:00",27:"18:30",28:"19:00",29:"19:30",30:"20:00",31:"20:30"]
+		def day = [] as Set
+		def hour = [] as Set
+		def Random r = new Random()
+
+		while(day.size() <= r.nextInt(2)+5){
+			day += r.nextInt(days.size() ** 1)
+		}
+		for (d in day){
+			while(hour.size() <= r.nextInt(25)+6){
+				hour += r.nextInt(hours.size() ** 1)
+			}
+			for (h in hour.sort()){
+				departureTimes[days[d]] += hours[h]
+			}
 			hour.clear()
-        }
+		}
 		return departureTimes
 	}
 	def destroy = {
 	}
-	
-	
+
+
 }
