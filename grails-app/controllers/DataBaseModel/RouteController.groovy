@@ -53,23 +53,30 @@ class RouteController {
 		def empresa = params.empresa
 		def precio = params.precio
 		def tabActive = params.hidTabActiva
-		thereIsConsult = true
+		def origenMapa = params.origenEnMapa
+		def destinoMapa = params.destinoEnMapa
 		
+		thereIsConsult = true
+		print tabActive
+		print origenMapa
+		print destinoMapa
 		def c = "from Route as r where "
 		def map = [:]
 		def l = c.size()
 		
-		if(origen != "-1"){
+		if(origen != "-1" || origenMapa != "-1"){
 			c += "r.originCity =:origin"
-			map["origin"] = origen
+			if(origen != "-1") map["origin"] = orgen
+			if(origenMapa != "-1") map["origin"] = origenMapa
 		} 
 		if(destino != "-1" && c.size() == l){
 			c += "r.destinyCity =:destiny"
 			map["destiny"] = destino
 		}else
-		if(destino != "-1" && c.size() != l){
+		if( (destino != "-1" || destinoMapa != "-1") && c.size() != l){
 			c += " and r.destinyCity =:destiny"
-			map["destiny"] = destino
+			if(destino != "-1") map["destiny"] = destino
+			if(destinoMapa != "-1") map["destiny"] = destinoMapa
 		} 
 		if(empresa != "-1" && c.size() == l){
 			c += "r.company.nameCompany =:company"

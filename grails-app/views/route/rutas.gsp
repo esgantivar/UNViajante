@@ -121,11 +121,13 @@ function placeMarker(location) {
 	  
 	  if(num==0){
 	  	origen.open(map,marker);
+	  	document.getElementById('origenEnMapa').value = nMarker[0];
 	  	num++;
 	  }
 	  
 	  else if(num==1){
 	  	destino.open(map,marker);
+	  	document.getElementById('destinoEnMapa').value = nMarker[0];
 	  	num++;
 	  	calcRoute();
 	  }
@@ -137,6 +139,10 @@ function placeMarker(location) {
 	  }
 }
 
+function enviarConsulta(){
+	document.getElementById('hidTabActiva').value = "normal"
+	document.getElementById('consultaForm').submit();
+}
 
 function nearestMarker(location){
 	var distances = Number.POSITIVE_INFINITY;
@@ -257,7 +263,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         {
         	document.getElementById('divBusquedaAvanzada').style.display="none"
             document.getElementById('divBusqueda').style.display="block"
-            document.getElementById('hidTabActiva').style.display="normal"
+            document.getElementById('hidTabActiva').value="normal"
             initialize();
         }
 
@@ -265,7 +271,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         {
         	document.getElementById('divBusquedaAvanzada').style.display="block"
         	document.getElementById('divBusqueda').style.display="none"
-        	document.getElementById('hidTabActiva').style.display="avanzada"
+        	document.getElementById('hidTabActiva').value="avanzada"
         }
         
     </script>
@@ -300,9 +306,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		</div>
 		<div id="divBusquedaAvanzada" style="display: none">
 			<h3>Busca tu Ruta</h3>
-			<form method="post" class="formit"
+			<form id="consultaForm" method="post" class="formit"
 				action="/UNViajante/route/consulta">
-				<input id="hidTabActiva" type="hidden" value="">
+				<input id="hidTabActiva" name="hidTabActiva" type="hidden" value="">
+				<input id="origenEnMapa" name="origenEnMapa" type="hidden" value="-1">
+				<input id="destinoEnMapa" name="destinoEnMapa" type="hidden" value="-1">
 				<div>
 					<table>
 						<tr>
@@ -363,7 +371,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		</div>
 
 		<div id="divBusqueda" style="display: block">
+		<h3>Busca tu Ruta</h3>
 			<div class="mapit" id="mapa" style="width: 938px; height: 360px"></div>
+			<input type="button" class="button_submit" value="BUSCAR" onclick="enviarConsulta()">			
 		</div>
 		
 		
