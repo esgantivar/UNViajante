@@ -17,9 +17,14 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script>
-// This example creates a 2-pixel-wide red polyline showing
-// the path of William Kingsford Smith's first trans-Pacific flight between
-// Oakland, CA, and Brisbane, Australia.
+////////////////////////////
+//variables para trazar la ruta mas corta
+	var map;
+	var num = 0;
+	var markers = [];
+	var directionsService = new google.maps.DirectionsService();
+	var directionsDisplay = new google.maps.DirectionsRenderer();
+////////////////////////////
 
 var pop = '${populations as JSON}';
 
@@ -32,8 +37,6 @@ var populations = JSON.parse(pop);
 //	document.write(populations[i].namePCenter);
 //}
 
-
-
 function initialize() {
 	var mapOptions = {
 	  zoom: 10,
@@ -41,29 +44,89 @@ function initialize() {
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	
-	var map = new google.maps.Map(document.getElementById('mapa'),
-	    mapOptions);
-	
-	
-	var flightPlanCoordinates = [        	
-	   	new google.maps.LatLng(4.608630556, -74.07670556),
-	   	new google.maps.LatLng(4.608555556, -74.07658889),
-	   	new google.maps.LatLng(4.608711111, -74.07648333),
-	   	new google.maps.LatLng(4.608861111, -74.07669722),
-		new google.maps.LatLng(4.608791667, -74.07674722),
-		new google.maps.LatLng(4.608630556, -74.07670556)
-	];
-
-	var flightPath = new google.maps.Polyline({
-	    path: flightPlanCoordinates,
-	    geodesic: true,
-	    strokeColor: '#FF0000',
-	    strokeOpacity: 1.0,
-	    strokeWeight: 2
+	map = new google.maps.Map(document.getElementById('mapa'), mapOptions);
+	    
+	////////////////////////////
+	google.maps.event.addListener(map, 'click', function(event) {
+		placeMarker(event.latLng);
 	});
 	
-	flightPath.setMap(map);
+	directionsDisplay.setMap(map);
+	
+	//quitar los markers de A y B:
+	directionsDisplay.setOptions( { suppressMarkers: true } );
 }
+
+////////////////////////////
+
+function placeMarker(location) {	
+	map.setCenter(location);
+	var marker = new google.maps.Marker({
+		position: location,
+		map: map,
+	});
+	markers.push(marker);
+			
+	  var origen = new google.maps.InfoWindow({
+	  	content:'Origen'
+	  });
+	  
+	  var destino = new google.maps.InfoWindow({
+	  	content:'Destino'
+	  });
+	  
+	  if(num==0){
+	  	origen.open(map,marker);
+	  	num++;
+	  }
+	  
+	  else if(num==1){
+	  	destino.open(map,marker);
+	  	num++;
+	  	calcRoute();
+	  }
+	  else if(num>1){
+	  	//borrar markers
+	  	deleteMarkers();
+	  	//borrar ruta
+	  	num=0;
+	  }
+}
+
+// Sets the map on all markers in the array.
+function setAllMap(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setAllMap(null);
+}
+
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
+}
+		
+//funcion para calcular una ruta
+function calcRoute(){
+	var request = {
+		origin: new google.maps.LatLng(markers[0].position.lat(), markers[0].position.lng()),
+		destination: new google.maps.LatLng(markers[1].position.lat(), markers[1].position.lng()),
+		travelMode: google.maps.DirectionsTravelMode.DRIVING
+		//travelMode: google.maps.TravelMode[DRIVING]
+	};
+	directionsService.route(request, function(response, status) {
+		if (status == google.maps.DirectionsStatus.OK){
+			directionsDisplay.setDirections(response);
+		}
+	});
+}
+
+////////////////////////////
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
