@@ -3,16 +3,19 @@
 <%@page import="grails.converters.JSON"%>
 <html>
 <head>
-<meta name="layout" content="main2"/>
+<meta name="layout" content="main2" />
 <title>Rutas</title>
 <%--<meta charset="utf-8">--%>
-<script src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
+<script
+	src="https://dl.dropboxusercontent.com/u/49936729/UNViajante/js/jquery.tools.min.js"></script>
 
 <%--<script src="${resource(dir: 'js', file: 'jquery.tools.min.js')}"></script>--%>
 <script src="${resource(dir: 'js', file: 'smartpaginator.js')}"></script>
 <%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'reset.css')}"type="text/css">--%>
 <%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'styl.css')}" type="text/css">--%>
-<link rel="stylesheet" href="${resource(dir: 'css', file: 'smartpaginator.css')}" type="text/css">
+<link rel="stylesheet"
+	href="${resource(dir: 'css', file: 'smartpaginator.css')}"
+	type="text/css">
 <%--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>--%>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -21,7 +24,7 @@
 //variables para trazar la ruta mas corta
 	var map;
 	var num = 0;
-	var markers = [];
+	var markersRuta = [];
 	var directionsService = new google.maps.DirectionsService();
 	var directionsDisplay = new google.maps.DirectionsRenderer();
 ////////////////////////////
@@ -41,24 +44,28 @@ function initialize() {
 	var centers = new Array(populations.length);
 	var markers = new Array(populations.length);
 	var infos = new Array(populations.length);
+	var names = new Array(populations.length);
+	
 	
 	var mapOptions = {
 	  zoom: 7,
 	  center: new google.maps.LatLng(4.608630556, -74.07670556),
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	var map = new google.maps.Map(document.getElementById('mapa'),
+	map = new google.maps.Map(document.getElementById('mapa'),
 	    mapOptions);
 
 	//Creacion de los puntos para los centros poblados
 	for(var i in populations){
 		centers[i] = new google.maps.LatLng(populations[i].latitude, populations[i].longitude);
+		names[i] = populations[i].namePCenter;
 	}
 
 	//Creacion de los marcadores
 	for(var j in centers){
 		markers[j] = new google.maps.Marker({
 			  position:centers[j],
+			  title: names[j],
 		  });
 	}
 
@@ -74,12 +81,7 @@ function initialize() {
     	markers[k].setMap(map);
         }
 
-    //Asignar los infos al mapa
-    for (var j in infos){
-    	google.maps.event.addListener(markers[j], 'click', function() {
-  		  infos[k].open(map,markers[j]);
-  		  });
-        }
+    
 	    
 	////////////////////////////
 	google.maps.event.addListener(map, 'click', function(event) {
@@ -95,12 +97,12 @@ function initialize() {
 ////////////////////////////
 
 function placeMarker(location) {	
-	map.setCenter(location);
+	map.setCenter(location); 
 	var marker = new google.maps.Marker({
 		position: location,
 		map: map,
 	});
-	markers.push(marker);
+	markersRuta.push(marker);
 			
 	  var origen = new google.maps.InfoWindow({
 	  	content:'Origen'
@@ -130,8 +132,8 @@ function placeMarker(location) {
 
 // Sets the map on all markers in the array.
 function setAllMap(map) {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(map);
+  for (var i = 0; i < markersRuta.length; i++) {
+    markersRuta[i].setMap(map);
   }
 }
 
@@ -143,16 +145,16 @@ function clearMarkers() {
 // Deletes all markers in the array by removing references to them.
 function deleteMarkers() {
   clearMarkers();
-  markers = [];
+  markersRuta = [];
 }
 		
 //funcion para calcular una ruta
 function calcRoute(){
 	var request = {
-		origin: new google.maps.LatLng(markers[0].position.lat(), markers[0].position.lng()),
-		destination: new google.maps.LatLng(markers[1].position.lat(), markers[1].position.lng()),
+		origin: new google.maps.LatLng(markersRuta[0].position.lat(), markersRuta[0].position.lng()),
+		destination: new google.maps.LatLng(markersRuta[1].position.lat(), markersRuta[1].position.lng()),
 		travelMode: google.maps.DirectionsTravelMode.DRIVING
-		//travelMode: google.maps.TravelMode[DRIVING]
+		
 	};
 	directionsService.route(request, function(response, status) {
 		if (status == google.maps.DirectionsStatus.OK){
@@ -232,22 +234,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </head>
 
 <body onload="finCarga()">
-<%--	<div id="header">--%>
-<%--		<div id="header_in">--%>
-<%--			<h1>--%>
-<%--				<a href="/UNViajante/inicio/inicio.gsp"><asset:image--%>
-<%--						src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"--%>
-<%--						height="70px" /></a>--%>
-<%--			</h1>--%>
-<%--			<div id="menu">--%>
-<%--				<ul>--%>
-<%--					<li><a href="/UNViajante/inicio/inicio.gsp">Inicio</a></li>--%>
-<%--					<li><a href="/UNViajante/route" class="active">Rutas</a></li>--%>
-<%--					<li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>--%>
-<%--				</ul>--%>
-<%--			</div>--%>
-<%--		</div>--%>
-<%--	</div>--%>
+	<%--	<div id="header">--%>
+	<%--		<div id="header_in">--%>
+	<%--			<h1>--%>
+	<%--				<a href="/UNViajante/inicio/inicio.gsp"><asset:image--%>
+	<%--						src="UNViajante.PNG" alt="Generic placeholder imag" width="155px"--%>
+	<%--						height="70px" /></a>--%>
+	<%--			</h1>--%>
+	<%--			<div id="menu">--%>
+	<%--				<ul>--%>
+	<%--					<li><a href="/UNViajante/inicio/inicio.gsp">Inicio</a></li>--%>
+	<%--					<li><a href="/UNViajante/route" class="active">Rutas</a></li>--%>
+	<%--					<li><a href="/UNViajante/inicio/nosotros.gsp">Nosotros</a></li>--%>
+	<%--				</ul>--%>
+	<%--			</div>--%>
+	<%--		</div>--%>
+	<%--	</div>--%>
 	<div id="main_part_inner">
 		<div id="main_part_inner_in">
 			<h2>Rutas Intermunicipales</h2>
@@ -255,8 +257,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	</div>
 	<div id="content_inner">
 		<div id="divPestañasBusqueda">
-			<input type="button" class="button" value="BUSQUEDA" onclick="verBusqueda()"> 
-			<input type="button" class="button" value="BUSQUEDA AVANZADA" onclick="verBusquedaAvanzada()">
+			<input type="button" class="button" value="BUSQUEDA"
+				onclick="verBusqueda()"> <input type="button" class="button"
+				value="BUSQUEDA AVANZADA" onclick="verBusquedaAvanzada()">
 		</div>
 		<div id="divBusquedaAvanzada" style="display: none">
 			<h3>Busca tu Ruta</h3>
@@ -318,49 +321,50 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				</div>
 				<input type="submit" class="button_submit" value="BUSCAR">
 			</form>
-			
+
 
 		</div>
 
 		<div id="divBusqueda" style="display: block">
 			<div class="mapit" id="mapa" style="width: 938px; height: 360px"></div>
 		</div>
-		
-		
+
+
 		<div id="divResultados" style="display: none;">
-				<g:if test="${routes?.size() > 0}">
-					<h3>Resultados</h3>
-					<div id="listaResultados">
-						<g:each var="route" in="${routes}">
+			<g:if test="${routes?.size() > 0}">
+				<h3>Resultados</h3>
+				<div id="listaResultados">
+					<g:each var="route" in="${routes}">
 
-							<div
-								style="padding: 20px; background-color: #F9F9F9; border-bottom: 1px solid #000000; font-size: 20px; cursor: pointer;"
-								onmouseover="mouseSobreRuta(this)"
-								onmouseleave="mouseNoSobreRuta(this)">
-								<g:link class="rutas" action="detalleRuta" id="${route.id}">
-									<table>
-										<tr>
-											<td style="width: 460px"><strong>Origen-Destino: </strong> ${route.originCity}
-												- ${route.destinyCity}</td>
-											<td><strong>Precio: </strong> $ ${route.valorAproxViaje} pesos</td>
-										</tr>
-										<tr>
-											<td><strong>Tiempo de Viaje: </strong> ${route.duracionViaje}
-												horas</td>
-											<td><strong>Empresa: </strong> ${route.company.nameCompany}</td>
-										</tr>
-									</table>
-								</g:link>
-							</div>
+						<div
+							style="padding: 20px; background-color: #F9F9F9; border-bottom: 1px solid #000000; font-size: 20px; cursor: pointer;"
+							onmouseover="mouseSobreRuta(this)"
+							onmouseleave="mouseNoSobreRuta(this)">
+							<g:link class="rutas" action="detalleRuta" id="${route.id}">
+								<table>
+									<tr>
+										<td style="width: 460px"><strong>Origen-Destino:
+										</strong> ${route.originCity} - ${route.destinyCity}</td>
+										<td><strong>Precio: </strong> $ ${route.valorAproxViaje}
+											pesos</td>
+									</tr>
+									<tr>
+										<td><strong>Tiempo de Viaje: </strong> ${route.duracionViaje}
+											horas</td>
+										<td><strong>Empresa: </strong> ${route.company.nameCompany}</td>
+									</tr>
+								</table>
+							</g:link>
+						</div>
 
-						</g:each>
-					</div>
-					<div id="black" style="margin: auto;"></div>
-				</g:if>
-				<g:if test="${routes?.size() <= 0}">
-					<h3>No hay resultados para esta busqueda</h3>
-				</g:if>
-			</div>
+					</g:each>
+				</div>
+				<div id="black" style="margin: auto;"></div>
+			</g:if>
+			<g:if test="${routes?.size() <= 0}">
+				<h3>No hay resultados para esta busqueda</h3>
+			</g:if>
+		</div>
 
 		<div class="cara"></div>
 		<%--		<h3>Contact information</h3>--%>
@@ -378,15 +382,15 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 	</div>
 	<hr class="cleanit">
-<%--	<div id="footer">--%>
-<%--		<div id="footer_in">--%>
-<%--			<p>--%>
-<%--				Copyright &copy; 2045 <a href="#">Site Name</a>. All Rights Reserved--%>
-<%--			</p>--%>
-<%--			<span>Design By: <a href="http://ries.cz">Vil&eacute;m--%>
-<%--					Ries</a></span>--%>
-<%--		</div>--%>
-<%--	</div>--%>
+	<%--	<div id="footer">--%>
+	<%--		<div id="footer_in">--%>
+	<%--			<p>--%>
+	<%--				Copyright &copy; 2045 <a href="#">Site Name</a>. All Rights Reserved--%>
+	<%--			</p>--%>
+	<%--			<span>Design By: <a href="http://ries.cz">Vil&eacute;m--%>
+	<%--					Ries</a></span>--%>
+	<%--		</div>--%>
+	<%--	</div>--%>
 	<script>
 		$(function() {
 			$("ul.controls").tabs("div.testimonials > div");
