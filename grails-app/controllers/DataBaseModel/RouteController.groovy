@@ -18,9 +18,14 @@ class RouteController {
         //respond Route.list(params), model:[routeInstanceCount: Route.count()]
 		def thereIsConsult = false
 		def tabActive = "normal"
-		
+		def origenPunto = []
+		origenPunto += "-1"
+		origenPunto += "-1"
+		def destinoPunto = []
+		destinoPunto += "-1"
+		destinoPunto += "-1"
 		render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), 
-			populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, consult:thereIsConsult, routes: [], tabActiva: tabActive]
+			populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, consult:thereIsConsult, routes: [], tabActiva: tabActive, origenPunto: origenPunto, destinoPunto: destinoPunto]
     }
 
     def show(Route routeInstance) {
@@ -55,11 +60,33 @@ class RouteController {
 		def tabActive = params.hidTabActiva
 		def origenMapa = params.origenEnMapa
 		def destinoMapa = params.destinoEnMapa
+		def origenPunto = params.origenPunto
+		def destinoPunto = params.destinoPunto
+		
+		if(origenPunto != "-1" && destinoPunto != "-1"){
+			def puntos = []
+			puntos += origenPunto.toString().replace('(', '').replace(')', '').replace(' ', '').split(',')[0]
+			puntos += origenPunto.toString().replace('(', '').replace(')', '').replace(' ', '').split(',')[1]
+			puntos += destinoPunto.toString().replace('(', '').replace(')', '').replace(' ', '').split(',')[0]
+			puntos += destinoPunto.toString().replace('(', '').replace(')', '').replace(' ', '').split(',')[1]
+			origenPunto = []
+			origenPunto += puntos[0]
+			origenPunto += puntos[1]
+			destinoPunto = []
+			destinoPunto += puntos[2]
+			destinoPunto += puntos[3]
+		}else{
+			origenPunto = []
+			origenPunto += "-1"
+			origenPunto += "-1"
+			destinoPunto = []
+			destinoPunto += "-1"
+			destinoPunto += "-1"
+		}
+
 		
 		thereIsConsult = true
-		print tabActive
-		print origenMapa
-		print destinoMapa
+	
 		def c = "from Route as r where "
 		def map = [:]
 		def l = c.size()
@@ -101,10 +128,10 @@ class RouteController {
 		
 		if(c.size() == l){ //En caso de que no se seleccione nigun filtro se retornan todas las rutas en la base
 			def routeList = Route.list()
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList, consult: thereIsConsult, tabActiva: tabActive]
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList, consult: thereIsConsult, tabActiva: tabActive, origenPunto: origenPunto, destinoPunto: destinoPunto]
 		}else{
 			def routeList = Route.findAll(c, map)
-			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList, consult: thereIsConsult, tabActiva: tabActive]
+			render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, routes: routeList, consult: thereIsConsult, tabActiva: tabActive, origenPunto: origenPunto, destinoPunto: destinoPunto]
 		}
 		
 	}
@@ -114,7 +141,19 @@ class RouteController {
 		def ruta = Route.findById(idRuta)
 		def hours =  ruta.departureTimes.values() as List
 		hours =  hours[1..hours.size()-1]
-		render view: 'detalleRuta', model:[route: ruta, horas: hours]
+		
+		def origen = PopulationCenter.findByNamePCenter(ruta.originCity)
+		def destino = PopulationCenter.findByNamePCenter(ruta.destinyCity)
+		
+		def origenPunto = []
+		origenPunto += origen.latitude
+		origenPunto += origen.longitude
+		
+		def destinoPunto = []
+		destinoPunto += destino.latitude
+		destinoPunto += destino.longitude
+		
+		render view: 'detalleRuta', model:[route: ruta, horas: hours, origenPunto: origenPunto, destinoPunto: destinoPunto]
 	}
 	
     @Transactional

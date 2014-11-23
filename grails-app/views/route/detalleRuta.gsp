@@ -33,32 +33,67 @@
 <%--TERRAIN 	This map type displays maps with physical features such as terrain and vegetation.--%>
 	
 <%--https://developers.google.com/maps/documentation/javascript/reference--%>
+	var map;
+	var num = 0;
+	var markersRuta = [];
+	var directionsService = new google.maps.DirectionsService();
+	var directionsDisplay = new google.maps.DirectionsRenderer();
+
 	function initialize() {
+
+		var markers = new Array(2);
 		var mapOptions = {
-			zoom : 10,
+			zoom : 7,
 			center : new google.maps.LatLng(4.608630556, -74.07670556),
 			mapTypeId : google.maps.MapTypeId.ROADMAP
 		};
+		map = new google.maps.Map(document.getElementById('mapa'), mapOptions);
 
-		var map = new google.maps.Map(document.getElementById('mapa'),
-				mapOptions);
+		//Creacion de los marcadores
 
-		var flightPlanCoordinates = [
-				new google.maps.LatLng(4.608630556, -74.07670556),
-				new google.maps.LatLng(4.608555556, -74.07658889),
-				new google.maps.LatLng(4.608711111, -74.07648333),
-				new google.maps.LatLng(4.608861111, -74.07669722),
-				new google.maps.LatLng(4.608791667, -74.07674722),
-				new google.maps.LatLng(4.608630556, -74.07670556) ];
-		var flightPath = new google.maps.Polyline({
-			path : flightPlanCoordinates,
-			geodesic : true,
-			strokeColor : '#FF0000',
-			strokeOpacity : 1.0,
-			strokeWeight : 2
+		markers[0] = new google.maps.Marker({
+			position : new google.maps.LatLng(${origenPunto[0]}, ${origenPunto[1]}),
+			title : '${route.originCity}'
 		});
 
-		flightPath.setMap(map);
+		markers[1] = new google.maps.Marker({
+			position : new google.maps.LatLng(${destinoPunto[0]}, ${destinoPunto[1]}),
+			title : '${route.destinyCity}'
+		});
+
+		markersRuta.push(markers[0]);
+		markersRuta.push(markers[1]); 
+
+		//Setting de los marcadores a los mapas
+		for ( var k in markers) {
+			markers[k].setMap(map);
+
+		}
+
+		directionsDisplay.setMap(map);
+
+		//quitar los markers de A y B:
+		directionsDisplay.setOptions({
+			suppressMarkers : true
+		});
+
+		calcRoute();
+
+	}
+
+	//funcion para calcular una ruta
+	function calcRoute(){
+		var request = {
+			origin: new google.maps.LatLng(markersRuta[0].position.lat(), markersRuta[0].position.lng()),
+			destination: new google.maps.LatLng(markersRuta[1].position.lat(), markersRuta[1].position.lng()),
+			travelMode: google.maps.DirectionsTravelMode.DRIVING
+			
+		};
+		directionsService.route(request, function(response, status) {
+			if (status == google.maps.DirectionsStatus.OK){
+				directionsDisplay.setDirections(response);
+			}
+		});
 	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
@@ -94,29 +129,35 @@
 
 		<table style="font-size: 20px">
 			<tr>
-				<td style="text-align:center ;width: 460px"><strong>Origen-Destino: </strong> ${route.originCity}-${route.destinyCity}</td>
-				<td style="text-align:center ;width: 460px"><strong>Tiempo de Viaje: </strong> ${route.duracionViaje}
-					horas</td>
-				<td style="text-align:center ;width: 460px"><strong>Telefono: </strong>${route.company.telephoneNumber.toString().replace(' ', '-')} </td>
+				<td style="text-align: center; width: 460px"><strong>Origen-Destino:
+				</strong> ${route.originCity}-${route.destinyCity}</td>
+				<td style="text-align: center; width: 460px"><strong>Tiempo
+						de Viaje: </strong> ${route.duracionViaje} horas</td>
+				<td style="text-align: center; width: 460px"><strong>Telefono:
+				</strong> ${route.company.telephoneNumber.toString().replace(' ', '-')}</td>
 			</tr>
 			<tr>
-				<td style="text-align:center ;width: 460px"><strong>Precio: </strong>$ ${route.valorAproxViaje} pesos</td>
-				<td style="text-align:center ;width: 460px"><strong>Empresa: </strong> ${route.company.nameCompany}</td>
-				<td style="text-align:center ;width: 460px"><strong>Direccion: </strong>${route.company.address} </td>
+				<td style="text-align: center; width: 460px"><strong>Precio:
+				</strong>$ ${route.valorAproxViaje} pesos</td>
+				<td style="text-align: center; width: 460px"><strong>Empresa:
+				</strong> ${route.company.nameCompany}</td>
+				<td style="text-align: center; width: 460px"><strong>Direccion:
+				</strong> ${route.company.address}</td>
 			</tr>
 		</table>
-		
+
 		<div class="cara"></div>
 		<hr class="cleanit">
-		
+
 		<table style="font-size: 20px; text-align: center;">
 			<tr style="border-bottom: 1px solid #000000">
-				<td colspan="7" style="text-align: center;"><strong>Horarios de Salida</strong></td>
+				<td colspan="7" style="text-align: center;"><strong>Horarios
+						de Salida</strong></td>
 			</tr>
 			<tr>
 				<td style="width: 140px; text-align: center;"><strong>Lunes</strong>
 					<ul>
-					
+
 						<g:each var="hora" in="${horas[0]}">
 
 							<li>
@@ -187,14 +228,14 @@
 					</ul></td>
 			</tr>
 		</table>
-		
+
 		<div class="cara"></div>
 		<hr class="cleanit">
-		
+
 		<div id="divBusqueda" style="display: block">
 			<div class="mapit" id="mapa" style="width: 938px; height: 360px"></div>
 		</div>
-		
+
 		<div class="cara"></div>
 		<hr class="cleanit">
 

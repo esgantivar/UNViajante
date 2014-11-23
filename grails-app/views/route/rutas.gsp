@@ -94,9 +94,37 @@ function initialize() {
 	
 	//quitar los markers de A y B:
 	directionsDisplay.setOptions( { suppressMarkers: true } );
+
+	//Mostrar la ruta inicial si existe
+	rutaInicial();
+	
 }
 
 ////////////////////////////
+
+function rutaInicial(){
+	
+    if('${origenPunto[0]}' != "-1" && '${destinoPunto[0]}' != "-1" )
+    {
+
+		
+        
+    	var marker1 = new google.maps.Marker({
+			position: new google.maps.LatLng(${origenPunto[0]}, ${origenPunto[1]}),
+			map: map
+		});
+
+    	var marker2 = new google.maps.Marker({
+    		position: new google.maps.LatLng(${destinoPunto[0]}, ${destinoPunto[1]}),
+			map: map
+		});
+		markersRuta.push(marker1);
+		markersRuta.push(marker2); 
+    	calcRoute();
+    	deleteMarkers();
+	}
+}
+
 
 function placeMarker(location) {	
 	map.setCenter(location); 
@@ -119,12 +147,14 @@ function placeMarker(location) {
 	  if(num==0){
 	  	origen.open(map,marker);
 	  	document.getElementById('origenEnMapa').value = nMarker[0];
+	  	document.getElementById('origenPunto').value = nMarker[1];
 	  	num++;
 	  }
 	  
 	  else if(num==1){
 	  	destino.open(map,marker);
 	  	document.getElementById('destinoEnMapa').value = nMarker[0];
+	  	document.getElementById('destinoPunto').value = nMarker[1];
 	  	num++;
 	  	calcRoute();
 	  }
@@ -310,6 +340,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				<input id="hidTabActiva" name="hidTabActiva" type="hidden" value="">
 				<input id="origenEnMapa" name="origenEnMapa" type="hidden" value="-1">
 				<input id="destinoEnMapa" name="destinoEnMapa" type="hidden" value="-1">
+				<input id="origenPunto" name="origenPunto" type="hidden" value="-1">
+				<input id="destinoPunto" name="destinoPunto" type="hidden" value="-1">
 				<div>
 					<table>
 						<tr>

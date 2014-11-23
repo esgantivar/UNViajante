@@ -75,7 +75,6 @@ class BootStrap {
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "86001", namePCenter: "Mocoa", latitude: 1.150363, longitude: -76.64994 ))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "63001", namePCenter: "Armenia", latitude: 4.53486, longitude: -75.683266 ))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "66001", namePCenter: "Pereira", latitude: 4.807241, longitude: -75.716771 ))
-//		agregarPoblacion(new PopulationCenter (idPopulationCenter: "88001", namePCenter: "San Andres", latitude: 12.580084, longitude: -81.706913 ))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "68001", namePCenter: "Bucaramanga", latitude: 7.115287, longitude: -73.132416 ))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "70001", namePCenter: "Sincelejo", latitude: 9.298266, longitude: -75.396674 ))
 		agregarPoblacion(new PopulationCenter (idPopulationCenter: "73001", namePCenter: "Ibague", latitude: 4.427993, longitude: -75.187788 ))
@@ -115,11 +114,6 @@ class BootStrap {
 		agregarRuta(new Route(originCity: "Cartagena", destinyCity: "Bogota", duracionViaje: 8.5, valorAproxViaje: 110000), "Expreso Brasilia", null)
 		agregarRuta(new Route(originCity: "Cartagena", destinyCity: "Medellin", duracionViaje: 13, valorAproxViaje: 105000), "Expreso Brasilia", null)
 
-
-		def s = "from Route as r where r.destinyCity =:destiny and r.valorAproxViaje between 30000 and 50000"
-		def routeList = Route.findAll(s,[destiny:'Medellin'])
-
-		print routeList[0].departureTimes
 	}
 
 	//Las poblaciones correspondientes a un departamento son agregadas al mismo
