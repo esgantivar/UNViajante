@@ -312,7 +312,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 						</tr>
 
 						<tr>
-							<td><select name="empresa">
+							<td><select name="empresa" style="color:black">
 									<option value="-1">Selecciona..</option>
 									<g:each var="company" in="${companies}">
 
@@ -322,7 +322,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 									</g:each>
 							</select></td>
-							<td><select name="origen">
+							<td><select name="origen" style="color:black">
 									<option value="-1">Selecciona..</option>
 									<g:each var="population" in="${populations}">
 
@@ -332,7 +332,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 									</g:each>
 							</select></td>
-							<td><select name="destino">
+							<td><select name="destino" style="color:black">
 									<option value="-1">Selecciona..</option>
 									<g:each var="population" in="${populations}">
 
@@ -342,7 +342,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 									</g:each>
 							</select></td>
-							<td><select name="precio">
+							<td><select name="precio" style="color:black">
 									<option value="-1">Selecciona..</option>
 									<g:each var="price" in="${prices}">
 
