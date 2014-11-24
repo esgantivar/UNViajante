@@ -11,7 +11,6 @@ class RouteController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 	def pricesList = ["20000-30000","30000-50000","50000-70000","70000-90000","mas de 90000"]
-	def thereIsConsult = false
     
 	def index(Integer max) {
         //params.max = Math.min(max ?: 10, 100)
@@ -60,7 +59,7 @@ class RouteController {
 		def origenPunto = params.origenPunto
 		def destinoPunto = params.destinoPunto
 		
-		thereIsConsult = true
+		def thereIsConsult = true
 	
 		def c = "from Route as r where "
 		def map = [:]
@@ -68,7 +67,7 @@ class RouteController {
 		
 		if(origen != "-1" || origenMapa != "-1"){
 			c += "r.originCity =:origin"
-			if(origen != "-1") map["origin"] = orgen
+			if(origen != "-1") map["origin"] = origen
 			if(origenMapa != "-1") map["origin"] = origenMapa
 		} 
 		if(destino != "-1" && c.size() == l){

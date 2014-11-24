@@ -175,6 +175,7 @@ function placeMarker(location) {
 	  }
 }
 
+
 function enviarConsulta(){
 	document.getElementById('hidTabActiva').value = "normal"
 	document.getElementById('consultaForm').submit();
@@ -408,8 +409,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				</div>
 				<input type="submit" class="button_submit" value="BUSCAR">
 			</form>
-
-
 		</div>
 
 		<div id="divBusqueda" style="display: block">
