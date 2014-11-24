@@ -18,12 +18,9 @@ class RouteController {
         //respond Route.list(params), model:[routeInstanceCount: Route.count()]
 		def thereIsConsult = false
 		def tabActive = "normal"
-		def origenPunto = []
-		origenPunto += "-1"
-		origenPunto += "-1"
-		def destinoPunto = []
-		destinoPunto += "-1"
-		destinoPunto += "-1"
+		def origenPunto = "-1"
+		def destinoPunto = "-1"
+		
 		render view:'rutas', model:[companies: Company.list(sort:'nameCompany', order:'asc'), 
 			populations: PopulationCenter.list(sort:'namePCenter', order:'asc'), prices:pricesList, consult:thereIsConsult, routes: [], tabActiva: tabActive, origenPunto: origenPunto, destinoPunto: destinoPunto]
     }
@@ -62,28 +59,6 @@ class RouteController {
 		def destinoMapa = params.destinoEnMapa
 		def origenPunto = params.origenPunto
 		def destinoPunto = params.destinoPunto
-		
-		if(origenPunto != "-1" && destinoPunto != "-1"){
-			def puntos = []
-			puntos += origenPunto.toString().replace('(', '').replace(')', '').replace(' ', '').split(',')[0]
-			puntos += origenPunto.toString().replace('(', '').replace(')', '').replace(' ', '').split(',')[1]
-			puntos += destinoPunto.toString().replace('(', '').replace(')', '').replace(' ', '').split(',')[0]
-			puntos += destinoPunto.toString().replace('(', '').replace(')', '').replace(' ', '').split(',')[1]
-			origenPunto = []
-			origenPunto += puntos[0]
-			origenPunto += puntos[1]
-			destinoPunto = []
-			destinoPunto += puntos[2]
-			destinoPunto += puntos[3]
-		}else{
-			origenPunto = []
-			origenPunto += "-1"
-			origenPunto += "-1"
-			destinoPunto = []
-			destinoPunto += "-1"
-			destinoPunto += "-1"
-		}
-
 		
 		thereIsConsult = true
 	
