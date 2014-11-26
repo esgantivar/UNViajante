@@ -30,6 +30,15 @@ environments {
     }
     production {
         dataSource {
+			
+//			dbCreate = "update"
+//			driverClassName = "org.postgresql.Driver"
+//			dialect = org.hibernate.dialect.PostgreSQLDialect
+//			uri = new URI(System.env.OPENSHIFT_POSTGRESQL_DB_URL)
+//			url = "jdbc:postgresql://"+uri.host+uri.path+"/"+System.env.OPENSHIFT_APP_NAME
+//			username = System.env.OPENSHIFT_POSTGRESQL_DB_USERNAME
+//			password = System.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD
+			
             dbCreate = "update"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
             properties {
