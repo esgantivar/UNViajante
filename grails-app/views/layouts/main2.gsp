@@ -53,7 +53,7 @@
 		</br>
 		</br>
 		<p>
-			Síguenos en: <a href="https://www.facebook.com/ViajanteCol"
+			Síguenos en: <a href="https://www.facebook.com/UNViajante"
 				target="_blank"><asset:image src="facebook.png" alt="Facebook" /></a>
 			<a href="https://www.twitter.com/ViajanteCol" target="_blank"><asset:image
 					src="twitter.png" alt="Twitter" /></a>

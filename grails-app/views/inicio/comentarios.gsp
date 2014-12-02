@@ -8,7 +8,7 @@
 <div id="main_part_inner">
   <div id="main_part_inner_in">
     <h2>Comentarios</h2>
-    <div class="button_main"> <a href="https://www.facebook.com/ViajanteCol" class="button_dark" target = "_blank">SOCIAL</a> </div>
+    <div class="button_main"> <a href="https://www.facebook.com/UNViajante" class="button_dark" target = "_blank">SOCIAL</a> </div>
   </div>
 </div>
 
@@ -24,7 +24,7 @@
 	}(document, 'script', 'facebook-jssdk'));
 </script>
 <div align=center> 
-	<div class="fb-comments" data-href="https://www.facebook.com/ViajanteCol" data-width="600" data-numposts="10" data-colorscheme="light">
+	<div class="fb-comments" data-href="https://www.facebook.com/UNViajante" data-width="600" data-numposts="10" data-colorscheme="light">
 	</div>
 </div>
 
